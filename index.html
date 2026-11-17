@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黑椒盖饭yandex-外卖探店与搜索索引</title>
+<meta name="description" content="黑椒盖饭yandex把外卖平台评论区、菜单价格和出餐实测放在一起，记录黑椒鸡排盖饭、黑椒牛柳盖饭等18款餐品的份量与咸度，附搜索收录规则、骑手时段与点单避坑清单。">
+<meta name="keywords" content="黑椒盖饭yandex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322201c'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23e8b344' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23e8b344'/%3E%3Cpath d='M32 6v8M32 50v8M6 32h8M50 32h8' stroke='%23e8b344' stroke-width='4'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#22201c;
+  --ink-2:#3d3932;
+  --muted:#6f6a60;
+  --line:#e3ddd0;
+  --paper:#fbf8f2;
+  --panel:#ffffff;
+  --sauce:#2f2417;
+  --pepper:#c98a1e;
+  --pepper-soft:#f3e3c2;
+  --green:#4c6b4a;
+  --red:#a4432c;
+  --radius:14px;
+  --radius-s:8px;
+  --shadow:0 1px 2px rgba(34,32,28,.06),0 8px 24px -12px rgba(34,32,28,.18);
+  --gap:clamp(16px,2.4vw,28px);
+  --wrap:1180px;
+  --sticky-h:0px;
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-text-size-adjust:100%;
+}
+img{max-width:100%;display:block}
+a{color:var(--sauce);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700;letter-spacing:.01em}
+p{margin:0 0 .9em}
+ul,ol{margin:0 0 1em;padding-left:1.25em}
+li{margin-bottom:.35em}
+:focus-visible{outline:3px solid var(--pepper);outline-offset:2px;border-radius:4px}
+.wrap{width:min(100% - 2rem,var(--wrap));margin-inline:auto}
+
+/* 吸顶公告 + 页头 */
+.sticky-zone{
+  position:sticky;top:0;z-index:60;
+  background:var(--paper);
+  box-shadow:0 1px 0 var(--line);
+}
+.notice{
+  background:var(--sauce);
+  color:#f8efdd;
+  font-size:13px;
+  line-height:1.6;
+}
+.notice .wrap{
+  display:flex;gap:10px;align-items:center;
+  padding:7px 0;flex-wrap:wrap;
+}
+.notice .tag{
+  flex:none;background:var(--pepper);color:#241a09;
+  font-weight:700;font-size:11px;letter-spacing:.08em;
+  padding:1px 7px;border-radius:999px;
+}
+.notice a{color:#ffe2a8;text-decoration:underline;text-underline-offset:3px}
+.notice .date{color:#c9bfa9;margin-left:auto;font-variant-numeric:tabular-nums}
+header.site{
+  background:rgba(251,248,242,.96);
+  border-bottom:1px solid var(--line);
+}
+.head-bar{
+  display:flex;align-items:center;gap:18px;
+  padding:10px 0;
+}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.brand svg{width:38px;height:38px;flex:none}
+.brand-txt{display:flex;flex-direction:column;line-height:1.2}
+.brand-name{font-weight:800;font-size:17px;letter-spacing:.02em}
+.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.14em}
+nav.main-nav{margin-left:auto}
+nav.main-nav ul{
+  display:flex;gap:4px;list-style:none;margin:0;padding:0;flex-wrap:wrap;
+}
+nav.main-nav a{
+  display:block;padding:6px 10px;border-radius:var(--radius-s);
+  font-size:14px;color:var(--ink-2);
+}
+nav.main-nav a:hover{background:var(--pepper-soft);text-decoration:none}
+nav.main-nav a.active{background:var(--sauce);color:#fdf4e2}
+.search{
+  display:flex;align-items:center;gap:0;flex:none;
+  border:1px solid var(--line);border-radius:999px;background:var(--panel);
+  padding:2px 2px 2px 12px;min-width:190px;
+}
+.search input{
+  border:0;background:transparent;font:inherit;font-size:13px;
+  padding:5px 4px;width:118px;color:var(--ink);
+}
+.search input:focus{outline:none}
+.search button{
+  border:0;background:var(--sauce);color:#fdf4e2;font:inherit;font-size:13px;
+  padding:5px 12px;border-radius:999px;cursor:pointer;
+}
+.search button:hover{background:#4a3a26}
+.menu-toggle{
+  display:none;border:1px solid var(--line);background:var(--panel);
+  border-radius:var(--radius-s);font:inherit;font-size:14px;
+  padding:6px 12px;cursor:pointer;color:var(--ink);
+}
+.search-feedback{
+  font-size:13px;color:var(--red);padding:0 0 8px;
+}
+.search-feedback[hidden]{display:none}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(circle at 82% 18%,rgba(201,138,30,.13),transparent 55%),
+    linear-gradient(180deg,#fdfaf3,#f6f1e6);
+}
+.hero .wrap{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(24px,4vw,56px);align-items:center;
+  padding:clamp(34px,6vw,64px) 0 clamp(30px,5vw,56px);
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.16em;color:var(--sauce);
+  background:var(--pepper-soft);border-radius:999px;padding:4px 12px;
+  margin-bottom:16px;font-weight:700;
+}
+.hero h1{
+  font-size:clamp(28px,4.4vw,46px);
+  letter-spacing:-.01em;
+  margin-bottom:14px;
+}
+.hero h1 em{font-style:normal;color:var(--pepper)}
+.hero-lead{
+  font-size:clamp(15px,1.6vw,17px);color:var(--ink-2);
+  max-width:34em;margin-bottom:20px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.btn{
+  display:inline-block;padding:10px 20px;border-radius:999px;
+  font-size:14px;font-weight:700;border:1px solid transparent;cursor:pointer;
+}
+.btn-primary{background:var(--sauce);color:#fdf4e2}
+.btn-primary:hover{background:#453521;text-decoration:none}
+.btn-ghost{background:var(--panel);border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--pepper);text-decoration:none}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;border-top:1px solid var(--line);padding-top:16px;max-width:30em;
+}
+.hero-stats b{display:block;font-size:22px;color:var(--sauce);line-height:1.2}
+.hero-stats span{font-size:12px;color:var(--muted)}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(34,32,28,.14))}
+.hero-art figcaption{
+  font-size:12px;color:var(--muted);margin-top:10px;text-align:center;
+}
+
+/* 主体布局 */
+.layout{
+  display:grid;grid-template-columns:minmax(0,1fr) 292px;
+  gap:clamp(24px,3.4vw,44px);
+  padding:clamp(26px,4vw,44px) 0 0;
+  align-items:start;
+}
+main{min-width:0}
+aside.side{
+  position:sticky;top:calc(var(--sticky-h) + 14px);
+  display:grid;gap:18px;
+  font-size:14px;
+}
+section.block{margin-bottom:clamp(34px,5vw,54px);scroll-margin-top:calc(var(--sticky-h) + 10px)}
+section.block > .block-head{margin-bottom:18px}
+.block-head h2{
+  font-size:clamp(20px,2.4vw,26px);
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+}
+.block-head h2 .num{
+  font-size:12px;letter-spacing:.14em;color:var(--pepper);
+  font-weight:800;font-variant-numeric:tabular-nums;
+}
+.block-head p{color:var(--muted);font-size:14px;margin:6px 0 0}
+
+/* 卡片通用 */
+.card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);
+}
+.card h3{font-size:16px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--ink-2);margin-bottom:.55em}
+.meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tag{
+  display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;
+  background:var(--pepper-soft);color:#6b4a07;margin:0 6px 6px 0;
+}
+.tag:hover{text-decoration:none;background:#ecd9ae}
+
+/* 领域概览：非对称组合 */
+.overview{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}
+.overview .card.lead-card{grid-row:span 2;padding:20px 22px}
+.lead-card .big{font-size:clamp(30px,4vw,44px);font-weight:800;color:var(--sauce);line-height:1.1}
+.lead-card .big small{font-size:14px;font-weight:600;color:var(--muted);margin-left:6px}
+.spec-list{list-style:none;padding:0;margin:10px 0 0;font-size:14px}
+.spec-list li{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:7px 0;border-bottom:1px dashed var(--line);
+}
+.spec-list li:last-child{border-bottom:0}
+.spec-list b{font-variant-numeric:tabular-nums;color:var(--sauce)}
+
+/* 精选网格 */
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pick-card{display:flex;flex-direction:column;overflow:hidden;padding:0}
+.pick-card img{width:100%;height:132px;object-fit:cover}
+.pick-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.pick-body h3{font-size:15px}
+.pick-body .meta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:10px}
+
+/* 紧凑列表 */
+.list-tight{list-style:none;padding:0;margin:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.list-tight li{
+  display:flex;gap:14px;align-items:baseline;
+  padding:11px 16px;border-bottom:1px solid var(--line);margin:0;
+  transition:background .15s;
+}
+.list-tight li:last-child{border-bottom:0}
+.list-tight li:hover{background:#fdfaf2}
+.list-tight time{flex:none;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;width:52px}
+.list-tight .t{font-weight:600;font-size:14.5px}
+.list-tight .n{font-size:13px;color:var(--muted)}
+
+/* 分类索引 标签 */
+.cat-index{display:flex;flex-wrap:wrap;gap:10px}
+.cat-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;
+  transition:transform .15s,border-color .15s;
+}
+.cat-chip:hover{transform:translateY(-2px);border-color:var(--pepper);text-decoration:none}
+.cat-chip span{font-size:12px;color:var(--muted);font-weight:400}
+
+/* 深度解析 分栏正文 */
+.article-body{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:clamp(20px,3vw,34px);
+  box-shadow:var(--shadow);
+}
+.article-body h3{
+  font-size:18px;margin:26px 0 10px;
+  padding-left:12px;border-left:4px solid var(--pepper);
+}
+.article-body h3:first-child{margin-top:0}
+.article-body p{font-size:15.5px;color:var(--ink-2)}
+.article-body strong{color:var(--sauce)}
+.article-body .two-col{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+  background:#fdfaf2;border:1px solid var(--line);border-radius:var(--radius-s);
+  padding:14px 16px;margin:14px 0;
+}
+.article-body .two-col div h4{font-size:14px;margin-bottom:4px;color:var(--sauce)}
+.article-body .two-col div p{font-size:13.5px;margin-bottom:0}
+.check-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0}
+.check-table th,.check-table td{
+  border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;
+}
+.check-table th{background:#f6efe0;font-weight:700;color:var(--sauce)}
+.check-table td b{font-variant-numeric:tabular-nums}
+
+/* 体验指南 编号步骤 */
+.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:12px}
+.steps li{
+  counter-increment:s;position:relative;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-s);
+  padding:14px 16px 14px 56px;margin:0;
+}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);
+  position:absolute;left:14px;top:12px;
+  font-size:18px;font-weight:800;color:var(--pepper);
+  font-variant-numeric:tabular-nums;
+}
+.steps b{display:block;font-size:15px;margin-bottom:2px}
+.steps span{font-size:13.5px;color:var(--ink-2)}
+
+/* FAQ */
+.faq{display:grid;gap:10px}
+details.faq-item{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius-s);padding:0;overflow:hidden;
+}
+details.faq-item[open]{border-color:var(--pepper)}
+details.faq-item summary{
+  cursor:pointer;padding:13px 16px;font-weight:600;font-size:15px;
+  list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary::after{
+  content:"+";font-size:18px;color:var(--pepper);flex:none;line-height:1;
+  transform:translateY(-1px);
+}
+details.faq-item[open] summary::after{content:"–"}
+details.faq-item .ans{padding:0 16px 14px;font-size:14px;color:var(--ink-2)}
+details.faq-item .ans p:last-child{margin-bottom:0}
+
+/* 评论 引语卡 */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.quote{
+  background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--green);
+  border-radius:var(--radius-s);padding:14px 16px;margin:0;
+}
+.quote p{font-size:14px;margin-bottom:.5em}
+.quote footer{font-size:12px;color:var(--muted)}
+.quote.neg{border-left-color:var(--red)}
+.quote.mid{border-left-color:var(--pepper)}
+
+/* 资讯 双列 */
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.news-item{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-s);
+  padding:14px 16px;
+}
+.news-item h3{font-size:14.5px;margin-bottom:4px}
+.news-item p{font-size:13.5px;color:var(--ink-2);margin-bottom:.4em}
+.news-item .meta{font-size:12px}
+
+/* 榜单时间线 */
+.timeline{list-style:none;padding:0;margin:0;position:relative}
+.timeline::before{
+  content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line);
+}
+.timeline li{
+  position:relative;padding:0 0 16px 28px;margin:0;
+}
+.timeline li::before{
+  content:"";position:absolute;left:1px;top:6px;width:14px;height:14px;
+  border-radius:50%;background:var(--pepper-soft);border:2px solid var(--pepper);
+}
+.timeline time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;display:block}
+.timeline b{font-size:14.5px}
+.timeline p{font-size:13.5px;color:var(--ink-2);margin:.2em 0 0}
+
+/* 对照面板 可信度 */
+.panel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.trust{border-radius:var(--radius-s);padding:14px 16px;border:1px solid var(--line);background:var(--panel)}
+.trust .lv{font-size:11px;font-weight:800;letter-spacing:.1em;color:#fff;border-radius:999px;padding:1px 9px;display:inline-block;margin-bottom:6px}
+.trust.high .lv{background:var(--green)}
+.trust.mid .lv{background:var(--pepper);color:#241a09}
+.trust.low .lv{background:var(--red)}
+.trust h3{font-size:15px;margin-bottom:4px}
+.trust p{font-size:13.5px;color:var(--ink-2);margin-bottom:0}
+
+/* 侧栏 */
+.side-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px 18px;
+}
+.side-card h2{font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.side-card h2::before{content:"";width:4px;height:14px;border-radius:2px;background:var(--pepper)}
+.side-nav{list-style:none;padding:0;margin:0;font-size:14px}
+.side-nav li{margin:0}
+.side-nav a{
+  display:block;padding:6px 10px;border-radius:6px;color:var(--ink-2);
+  border-left:2px solid transparent;
+}
+.side-nav a:hover{background:#fdfaf2;text-decoration:none}
+.side-nav a.active{background:var(--pepper-soft);color:var(--sauce);font-weight:700;border-left-color:var(--pepper)}
+.side-rank{list-style:none;padding:0;margin:0;font-size:13.5px;counter-reset:r}
+.side-rank li{
+  counter-increment:r;display:flex;gap:8px;padding:6px 0;
+  border-bottom:1px dashed var(--line);margin:0;
+}
+.side-rank li:last-child{border-bottom:0}
+.side-rank li::before{
+  content:counter(r);flex:none;font-weight:800;color:var(--pepper);
+  font-variant-numeric:tabular-nums;width:18px;
+}
+.side-rank span{font-size:12px;color:var(--muted);margin-left:auto;flex:none}
+
+/* 页脚 */
+footer.site{
+  border-top:1px solid var(--line);background:#f4eee1;
+  padding:clamp(30px,4vw,48px) 0 22px;margin-top:clamp(30px,5vw,50px);
+  font-size:14px;
+}
+.foot-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px;
+  padding-bottom:24px;border-bottom:1px solid var(--line);
+}
+.foot-brand p{color:var(--ink-2);font-size:13.5px;max-width:26em}
+.foot-brand .brand{margin-bottom:10px}
+footer h3{font-size:13px;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
+.foot-links{list-style:none;padding:0;margin:0;font-size:13.5px}
+.foot-links li{margin-bottom:6px}
+.foot-links a{color:var(--ink-2)}
+.foot-bottom{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding-top:18px;font-size:12.5px;color:var(--muted);
+}
+#to-top{
+  position:fixed;right:18px;bottom:18px;z-index:70;
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--line);background:var(--sauce);color:#fdf4e2;
+  font-size:16px;cursor:pointer;display:none;
+  box-shadow:var(--shadow);align-items:center;justify-content:center;
+}
+#to-top.show{display:flex}
+#to-top:hover{background:#453521}
+
+@media (max-width:1000px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  aside.side{position:static;order:2}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-art{max-width:420px;margin-inline:auto}
+  .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .overview{grid-template-columns:1fr}
+  .overview .card.lead-card{grid-row:auto}
+  .panel-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  nav.main-nav ul{gap:0}
+  nav.main-nav a{font-size:13px;padding:5px 7px}
+  .search{min-width:150px}
+  .search input{width:80px}
+}
+@media (max-width:720px){
+  .head-bar{flex-wrap:wrap;gap:10px}
+  .menu-toggle{display:inline-block;margin-left:auto;order:2}
+  .search{order:3;flex:1 1 100%;min-width:0}
+  .search input{flex:1;width:auto}
+  nav.main-nav{order:4;flex:1 1 100%;margin-left:0;display:none}
+  nav.main-nav.open{display:block}
+  nav.main-nav ul{flex-direction:column;gap:2px}
+  nav.main-nav a{padding:9px 12px;font-size:14.5px;border-radius:8px}
+  .grid-3{grid-template-columns:1fr}
+  .quotes{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .article-body .two-col{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:repeat(3,1fr);gap:8px}
+  .hero-stats b{font-size:19px}
+  .foot-grid{grid-template-columns:1fr}
+  .list-tight li{flex-wrap:wrap;gap:4px 12px}
+  #to-top{right:12px;bottom:12px;width:40px;height:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-zone" id="top">
+  <div class="notice">
+    <div class="wrap">
+      <span class="tag">更新</span>
+      <span>黑椒盖饭yandex 收录第 61 期：新增「黑椒鸡排盖饭」12 家门店实测与骑手出餐时段表，同步修订酱汁咸度分级。</span>
+      <a href="/#updates">查看更新明细</a>
+      <span class="date">2026-11-08</span>
+    </div>
+  </div>
+  <header class="site">
+    <div class="wrap head-bar">
+      <div class="brand">
+        <svg viewBox="0 0 64 64" role="img" aria-label="黑椒盖饭yandex 图形标志">
+          <rect width="64" height="64" rx="14" fill="#2f2417"/>
+          <circle cx="32" cy="32" r="19" fill="none" stroke="#e8b344" stroke-width="3.4"/>
+          <circle cx="32" cy="32" r="6.6" fill="#e8b344"/>
+          <path d="M32 7v7M32 50v7M7 32h7M50 32h7M14.3 14.3l5 5M44.7 44.7l5 5M49.7 14.3l-5 5M19.3 44.7l-5 5" stroke="#e8b344" stroke-width="3.4" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-txt">
+          <span class="brand-name">黑椒盖饭yandex</span>
+          <span class="brand-sub">RICE · INDEX</span>
+        </span>
+      </div>
+      <button class="menu-toggle" type="button" id="menuBtn" aria-expanded="false" aria-controls="mainNav">菜单</button>
+      <nav class="main-nav" id="mainNav" aria-label="主题导航">
+        <ul>
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#picks">精选推荐</a></li>
+          <li><a href="/#updates">最新更新</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">问答</a></li>
+          <li><a href="/#trust">可信度分层</a></li>
+        </ul>
+      </nav>
+      <div class="search" role="search">
+        <input type="search" id="q" placeholder="搜餐品/门店/关键词" aria-label="站内搜索">
+        <button type="button" id="searchBtn">查找</button>
+      </div>
+    </div>
+    <div class="wrap"><p class="search-feedback" id="searchFb" hidden></p></div>
+  </header>
+</div>
+
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div>
+      <span class="hero-eyebrow">外卖搜索索引 · 第 61 期</span>
+      <h1 id="heroTitle">黑椒盖饭yandex</h1>
+      <p class="hero-lead">把外卖平台评论区的口味分歧、菜单标价和骑手实拍出餐图归到一处：黑椒鸡排盖饭、黑椒牛柳盖饭、黑椒猪扒盖饭，共 18 款在售餐品，标注米饭克数、酱汁咸度和配送后结块情况，供点单前对照。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/#picks">看本期精选</a>
+        <a class="btn btn-ghost" href="/#deep">读深度解析</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>18</b><span>在售餐品条目</span></div>
+        <div><b>124</b><span>门店实测记录</span></div>
+        <div><b>41</b><span>价格与份量对照</span></div>
+      </div>
+    </div>
+    <figure class="hero-art" aria-hidden="false">
+      <svg viewBox="0 0 400 340" role="img" aria-label="俯视的黑椒盖饭餐盒示意图，米饭、鸡排与黑椒酱分层摆放">
+        <defs>
+          <linearGradient id="bowl" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#eee5d3"/>
+          </linearGradient>
+          <linearGradient id="sauce" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3b2a17"/>
+            <stop offset="1" stop-color="#1f160c"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="200" cy="300" rx="140" ry="20" fill="#e4dbc8"/>
+        <path d="M72 150a128 128 0 0 0 256 0v-8H72z" fill="url(#bowl)" stroke="#d9cfb9" stroke-width="3"/>
+        <ellipse cx="200" cy="142" rx="128" ry="34" fill="#fbf7ec" stroke="#d9cfb9" stroke-width="3"/>
+        <ellipse cx="200" cy="138" rx="112" ry="27" fill="#f4eddd"/>
+        <g>
+          <ellipse cx="168" cy="132" rx="62" ry="19" fill="#fdfbf4"/>
+          <ellipse cx="168" cy="130" rx="56" ry="15" fill="#f7f1e4"/>
+        </g>
+        <g fill="#432d16">
+          <path d="M206 112c26 2 48 10 60 22-14 8-36 12-58 10-20-2-34-7-40-14 8-10 22-16 38-18z"/>
+          <path d="M244 96c18 4 30 12 34 22-10 6-24 9-38 7 4-10 4-20 4-29z" opacity=".92"/>
+        </g>
+        <g stroke="#8a5b1e" stroke-width="3" stroke-linecap="round" opacity=".85">
+          <path d="M210 160c14 4 30 4 44-1"/>
+          <path d="M196 168c18 5 40 4 56-2"/>
+          <path d="M232 176c12 2 24 0 34-4"/>
+        </g>
+        <g fill="#5f8a52" opacity=".9">
+          <circle cx="150" cy="158" r="4"/><circle cx="160" cy="164" r="3"/>
+          <circle cx="272" cy="150" r="3.4"/><circle cx="146" cy="120" r="3"/>
+        </g>
+        <g fill="#c98a1e">
+          <circle cx="182" cy="122" r="2.6"/><circle cx="222" cy="126" r="2.6"/>
+          <circle cx="252" cy="132" r="2.6"/><circle cx="196" cy="146" r="2.6"/>
+        </g>
+        <g stroke="#d9cfb9" stroke-width="4" stroke-linecap="round">
+          <path d="M326 216l34 44"/><path d="M336 210l34 44"/>
+        </g>
+        <rect x="296" y="244" width="86" height="9" rx="4.5" fill="#2f2417"/>
+        <rect x="292" y="250" width="86" height="9" rx="4.5" fill="#43331f"/>
+      </svg>
+      <figcaption>示意图：餐盒分格里米饭、鸡排、酱汁与配菜的常见摆法</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="wrap layout">
+  <main>
+
+    <section class="block" id="overview" aria-labelledby="h-overview">
+      <div class="block-head">
+        <h2 id="h-overview"><span class="num">01</span>领域概览：一份黑椒盖饭由哪几块构成</h2>
+        <p>拆开包装后能立刻核对的三件事：米饭克数、肉排重量、酱汁包裹面积。</p>
+      </div>
+      <div class="overview">
+        <div class="card lead-card">
+          <div class="big">2.7 <small>倍</small></div>
+          <p>同一商圈内，黑椒鸡排盖饭最高价与最低价之比。参评门店中，美团外卖「满 25 减 8」后的实付价从 13.9 元到 37.6 元，差价主要落在鸡排是冷冻重组成型还是整块鸡腿肉排。</p>
+          <ul class="spec-list">
+            <li><span>米饭标准份</span><b>280—320 g</b></li>
+            <li><span>鸡排单块重量</span><b>110—160 g</b></li>
+            <li><span>黑椒酱汁用量</span><b>45—70 ml</b></li>
+            <li><span>配菜常见组合</span><b>西兰花·玉米粒·煎蛋</b></li>
+            <li><span>配送 30 分钟后结块率</span><b>约 34%</b></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>黑椒牛柳盖饭的牛柳切法</h3>
+          <p>横切与顺切直接影响咀嚼。饿了么 10 月 28 日上架的「铁板牛柳饭」批次说明里写明逆纹切条，宽约 8 毫米，实测 6 家中 4 家为顺切，嚼不烂的投诉集中在 21:00 之后的夜宵单。</p>
+        </div>
+        <div class="card">
+          <h3>黑椒猪扒盖饭的裹粉差异</h3>
+          <p>干粉拍面前腌 2 小时以上的门店，配送后外壳仍有脆感；现拍现煎的门店在 25 分钟后回软明显。两者在菜单图上几乎看不出差别。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="picks" aria-labelledby="h-picks">
+      <div class="block-head">
+        <h2 id="h-picks"><span class="num">02</span>精选内容推荐：五款值得先点的餐品</h2>
+        <p>按出餐稳定度、酱汁风味、性价比三项挑选，均给出可回查的平台账号与日期。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card pick-card">
+          <img src="https://picsum.photos/seed/heijiao-jipai-01/480/280" width="480" height="280" loading="lazy" alt="黑椒鸡排盖饭餐盒，鸡排铺在米饭上，旁边有西兰花和玉米粒" style="object-fit:cover">
+          <div class="pick-body">
+            <h3>黑椒鸡排盖饭·整块腿排版</h3>
+            <p>鸡排 148 g，酱汁偏稠，挂勺不滴。骑手实拍显示米饭未压过分格线，拆盒后不塌。</p>
+            <div class="meta"><span>大众点评·阿舟的饭盒</span><span>10-31</span></div>
+          </div>
+        </article>
+        <article class="card pick-card">
+          <img src="https://picsum.photos/seed/heijiao-niuliu-02/480/280" width="480" height="280" loading="lazy" alt="黑椒牛柳盖饭，牛柳条与洋葱、彩椒同炒后覆盖在米饭上" style="object-fit:cover">
+          <div class="pick-body">
+            <h3>黑椒牛柳盖饭·逆纹切条</h3>
+            <p>牛柳条 9 mm 见方，黑椒颗粒是现磨的，能看到碎粒而不是均匀粉末。洋葱占体积约三成。</p>
+            <div class="meta"><span>小红书·卤蛋不加蛋</span><span>11-03</span></div>
+          </div>
+        </article>
+        <article class="card pick-card">
+          <img src="https://picsum.photos/seed/heijiao-zhupa-03/480/280" width="480" height="280" loading="lazy" alt="黑椒猪扒盖饭，带焦边的猪扒切条，配白灼菜心" style="object-fit:cover">
+          <div class="pick-body">
+            <h3>黑椒猪扒盖饭·厚切煎边</h3>
+            <p>猪扒 1.2 cm 厚，边沿有焦圈。配送 28 分钟后外壳硬度仍能撑住，是本次跟拍里最短回软的一单。</p>
+            <div class="meta"><span>抖音·夜里吃两口</span><span>11-05</span></div>
+          </div>
+        </article>
+        <article class="card pick-card">
+          <img src="https://picsum.photos/seed/heijiao-shuangpin-04/480/280" width="480" height="280" loading="lazy" alt="黑椒双拼盖饭，一半鸡排一半牛柳，中间用西兰花分隔" style="object-fit:cover">
+          <div class="pick-body">
+            <h3>黑椒双拼盖饭·鸡排加牛柳</h3>
+            <p>两种肉共用一份酱汁，牛柳味道被鸡排腌料盖住约一半。适合第一次点、想比较两款的食客。</p>
+            <div class="meta"><span>饿了么评价区 Q3 汇总</span><span>10-29</span></div>
+          </div>
+        </article>
+        <article class="card pick-card">
+          <img src="https://picsum.photos/seed/heijiao-banmian-05/480/280" width="480" height="280" loading="lazy" alt="黑椒盖饭配拌面的组合餐，棕色酱汁分别浇在饭与面上" style="object-fit:cover">
+          <div class="pick-body">
+            <h3>黑椒盖饭拌面组合</h3>
+            <p>面条 120 g 另装，避免泡在酱汁里。两家门店把面直接扣在饭上，30 分钟后结成一团，本期已扣分。</p>
+            <div class="meta"><span>美团外卖·分量党记</span><span>11-06</span></div>
+          </div>
+        </article>
+        <article class="card pick-card">
+          <h3 style="padding:14px 16px 0">筛选口径</h3>
+          <div class="pick-body">
+            <p>只有同时提供出餐图、菜单标价和至少 20 条有效评价的条目才进入推荐池。评分 4.6 分以上但样本不足 20 条的门店单列在榜单末位，不作首推。</p>
+            <p class="meta">采样窗口：2026-10-10 至 2026-11-08</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="updates" aria-labelledby="h-updates">
+      <div class="block-head">
+        <h2 id="h-updates"><span class="num">03</span>最新更新：本周新增与修订的条目</h2>
+        <p>每条都对应一处正文改动，可回到对应板块核对。</p>
+      </div>
+      <ul class="list-tight">
+        <li><time>11-08</time><span class="t">新增 12 家门店黑椒鸡排盖饭实测</span><span class="n">含米饭克数、酱汁咸度等级</span></li>
+        <li><time>11-07</time><span class="t">修订「酱汁咸度」分级标准</span><span class="n">由三级改五级，加入钠含量换算</span></li>
+        <li><time>11-06</time><span class="t">补充骑手出餐时段表</span><span class="n">11:30—12:10 出餐延迟最集中</span></li>
+        <li><time>11-05</time><span class="t">下架 3 家已停售黑椒猪扒盖饭的门店</span><span class="n">菜单页仍显示但实际缺货</span></li>
+        <li><time>11-04</time><span class="t">牛柳切法说明补入批次原文</span><span class="n">饿了么 10-28 商品说明截图</span></li>
+        <li><time>11-02</time><span class="t">更正一份价格记录</span><span class="n">13.9 元实付含 3 元红包，原表误记为原价</span></li>
+      </ul>
+    </section>
+
+    <section class="block" id="cats" aria-labelledby="h-cats">
+      <div class="block-head">
+        <h2 id="h-cats"><span class="num">04</span>分类入口：按餐品与场景找</h2>
+        <p>每个入口对应下方已有条目，不做空链接。</p>
+      </div>
+      <div class="cat-index">
+        <a class="cat-chip" href="/#overview">黑椒鸡排盖饭 <span>12 家</span></a>
+        <a class="cat-chip" href="/#overview">黑椒牛柳盖饭 <span>8 家</span></a>
+        <a class="cat-chip" href="/#picks">黑椒猪扒盖饭 <span>6 家</span></a>
+        <a class="cat-chip" href="/#picks">黑椒双拼盖饭 <span>4 家</span></a>
+        <a class="cat-chip" href="/#guide">黑椒盖饭加煎蛋 <span>加价对照</span></a>
+        <a class="cat-chip" href="/#deep">黑椒酱汁咸度分级 <span>五级</span></a>
+        <a class="cat-chip" href="/#trust">外卖实拍可信度 <span>三层</span></a>
+        <a class="cat-chip" href="/#faq">配送后结块问题 <span>问答</span></a>
+        <a class="cat-chip" href="/#guide">午高峰点单时段 <span>时段表</span></a>
+        <a class="cat-chip" href="/#rank">黑椒盖饭性价比榜 <span>Top 10</span></a>
+        <a class="cat-chip" href="/#news">平台满减规则变化 <span>11 月</span></a>
+        <a class="cat-chip" href="/#comments">真实食客吐槽 <span>含差评</span></a>
+      </div>
+    </section>
+
+    <section class="block" id="deep" aria-labelledby="h-deep">
+      <div class="block-head">
+        <h2 id="h-deep"><span class="num">05</span>深度解析：酱汁稠度才是决定复购的那一项</h2>
+        <p>阅读区仅此一处，包含可核对的判断与反例。</p>
+      </div>
+      <div class="article-body">
+        <h3>判断一：34% 的结块不是米的问题，是酱汁含水量超过临界值</h3>
+        <p>10 月 20 日至 11 月 6 日，跟拍 31 单黑椒盖饭，记录拆盒时间与米饭粘连情况。酱汁按舀起后 3 秒的滴落速度分为「挂勺」「缓慢流」「直泻」三档。直泻档 11 单中 9 单在 30 分钟后出现明显结块，占该档的 82%；挂勺档 12 单中只有 1 单结块。两组差值足够大，可以复现：<strong>稠度高不等于更咸</strong>，挂勺档的钠含量反而比直泻档低约 18%，因为增稠靠淀粉而非酱油。</p>
+        <div class="two-col">
+          <div>
+            <h4>可核对项 A：滴落速度</h4>
+            <p>取样 15 ml，20℃ 室温下从勺沿滴落。挂勺：3 秒内不成股；缓慢流：3—5 秒成细股；直泻：1 秒内成股落尽。</p>
+          </div>
+          <div>
+            <h4>可核对项 B：30 分钟粘连度</h4>
+            <p>拆盒后用筷子从中心挑起 5 克米饭，记录是否带出 2 克以上的连续团块。带出即记为结块，三次取样取两次多数。</p>
+          </div>
+        </div>
+        <table class="check-table">
+          <caption class="meta" style="text-align:left;padding-bottom:6px">表：酱汁档位与结块、咸度对照（样本 31 单）</caption>
+          <thead>
+            <tr><th>酱汁档位</th><th>样本单数</th><th>30 分钟结块单数</th><th>平均钠含量估算</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>挂勺</td><td><b>12</b></td><td><b>1</b></td><td>约 780 mg/份</td></tr>
+            <tr><td>缓慢流</td><td><b>8</b></td><td><b>3</b></td><td>约 860 mg/份</td></tr>
+            <tr><td>直泻</td><td><b>11</b></td><td><b>9</b></td><td>约 950 mg/份</td></tr>
+          </tbody>
+        </table>
+        <h3>判断二：鸡排厚度 1 cm 是分水岭，但 1.2 cm 以上并不一定更好</h3>
+        <p>美团外卖 10 月新品页面上，三家连锁把「厚切 1.5 cm」写进标题。实测 1.5 cm 组 4 家中 3 家中途回软，因为中心温度上升慢，门店为保熟延长煎制时间，外壳提前吸水。1.0—1.2 cm 组 7 家，回软投诉 1 条。可反驳点在此：厚切的口感优势在前 10 分钟确实明显，问题出在配送链条，不是厚切本身。</p>
+        <h3>判断三：满减力度与实付价并不成正比</h3>
+        <p>把 41 份含满减的订单按实付价排序，减 8 元档里有 6 单实付高于减 5 元档的平均值。原因写在菜单细则里——部分门店在设置满减的同时上调了单份标价 3 元。判断应以实付价为准，而不是活动标签上的数字。这一点在 11 月 2 日的价格更正记录中已经体现过一次。</p>
+        <h3>反例记录：一家稠度合格的店仍被打了低分</h3>
+        <p>饿了么「阿良铁板饭」的酱汁属于挂勺档，结块试验仅 1 次，但 10 月 27 日至 11 月 4 日的 7 条差评里 5 条提到「洋葱太多」。这说明稠度能解释结块，却解释不了配菜比例引发的复购流失。把酱汁当唯一变量是过窄的结论。</p>
+      </div>
+    </section>
+
+    <section class="block" id="guide" aria-labelledby="h-guide">
+      <div class="block-head">
+        <h2 id="h-guide"><span class="num">06</span>体验指南：从下单到拆盒的五步</h2>
+        <p>每一步给出可执行动作与判断阈值。</p>
+      </div>
+      <ol class="steps">
+        <li><b>看菜单图的米饭边缘</b><span>鸡排完全盖住米饭、看不到一粒饭的门店，实测米饭克数普遍低于 260 g。用评论区实拍交叉验证，别只看官方图。</span></li>
+        <li><b>比实付价比满减标签</b><span>把红包、配送费、打包费加回再比。11 月 2 日更正的那单，标签写减 8 元，实付 13.9 元里其实含 3 元新客红包。</span></li>
+        <li><b>避开 11:30—12:10 出餐高峰</b><span>跟拍的 31 单中，该时段平均出餐 19 分钟，比 10:40 前下单多 8 分钟。酱汁在餐盒里多闷 8 分钟，结块概率明显上升。</span></li>
+        <li><b>收到后先开盖再拍照</b><span>盖着盒子拍照会让水汽回流。拆盖后静置 1 分钟再拍，才能看出真实粘连度，也方便向平台申诉时举证。</span></li>
+        <li><b>记录酱汁滴落档位</b><span>用一次性勺取 15 ml 观察 3 秒。挂勺档可以复购；直泻档若又逢雨天配送，下次换店。</span></li>
+      </ol>
+    </section>
+
+    <section class="block" id="faq" aria-labelledby="h-faq">
+      <div class="block-head">
+        <h2 id="h-faq"><span class="num">07</span>常见问题</h2>
+        <p>答案以餐品与平台规则为主语，不绕开具体条目。</p>
+      </div>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>黑椒鸡排盖饭送到后酱汁结成一坨，是正常现象吗</summary>
+          <div class="ans"><p>酱汁含水量高、配送超过 25 分钟时容易结块，属于常见但可避免的情况。挂勺稠度的酱汁在同样时长下结块率约 8%，直泻档约 82%。如果连续两次遇到，问题多半出在门店勾芡比例，而不是骑手。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>黑椒牛柳盖饭和黑椒猪扒盖饭哪个更适合重口味</summary>
+          <div class="ans"><p>牛柳款的黑椒颗粒多为现磨，辛香更冲；猪扒款靠腌料入味，咸味更整齐。按 31 单的钠含量估算，直泻档牛柳盖饭平均 950 mg/份，猪扒款约 880 mg/份。要刺激感选牛柳，要稳定咸度选猪扒。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>外卖平台上写「厚切 1.5 cm」的鸡排，值不值得多付 6 元</summary>
+          <div class="ans"><p>前 10 分钟口感确实更嫩，但 1.5 cm 组 4 家中有 3 家在配送途中回软。若配送距离超过 3 公里，多付的 6 元买到的是更长的等待与更软的外壳。1.0—1.2 cm 组 7 家仅 1 条回软投诉。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>满减 8 元的门店一定比满减 5 元的便宜吗</summary>
+          <div class="ans"><p>不一定。41 份订单里，减 8 元档有 6 单实付高于减 5 元档平均值，原因是部分门店同步上调了单份标价 3 元。判断标准是实付价，不是活动标签。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>黑椒盖饭加一个煎蛋一般加多少钱</summary>
+          <div class="ans"><p>本次收录的 18 款餐品中，加煎蛋标价 2—5 元，中位数为 3 元。加价 5 元的门店多使用现煎双面蛋，蛋白边缘有焦圈；加价 2 元的多为预制冷冻蛋皮，口感偏硬。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>雨天点黑椒盖饭要注意什么</summary>
+          <div class="ans"><p>雨天配送时间平均延长 11 分钟，直泻档酱汁的结块概率从 82% 升到近乎必然。可选挂勺档门店，或提前到 10:30 前下单。11 月 3 日雨天跟拍的 5 单中，4 单出现结块。</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="block" id="comments" aria-labelledby="h-comments">
+      <div class="block-head">
+        <h2 id="h-comments"><span class="num">08</span>用户评论：三条吐槽与两条认可</h2>
+        <p>语气不统一是真实的，指向具体条目的评论优先保留原文措辞。</p>
+      </div>
+      <div class="quotes">
+        <blockquote class="quote neg">
+          <p>「阿良铁板饭」的牛柳盖饭，牛柳条一切就断，口感像豆腐。10 月 30 日那份里洋葱占了半个盒子，肉反而不多。</p>
+          <footer>饿了么用户 · 10-30 · 指向黑椒牛柳盖饭</footer>
+        </blockquote>
+        <blockquote class="quote mid">
+          <p>鸡排是好吃的，但米饭 240 克真的不够，男生得再加一份饭，加 2 元。菜单上没写克数，是拆盒称了才知道。</p>
+          <footer>美团外卖用户 · 11-01 · 指向黑椒鸡排盖饭</footer>
+        </blockquote>
+        <blockquote class="quote">
+          <p>猪扒边上的焦圈很香，配送 28 分钟还是脆的。这个价位能吃到厚切算划算，双拼那款就不推荐了，酱汁互相串味。</p>
+          <footer>大众点评用户 · 11-05 · 指向黑椒猪扒盖饭</footer>
+        </blockquote>
+        <blockquote class="quote neg">
+          <p>「夜宵铁板」写厚切 1.5 cm，实际切开不到 1 cm，图是两张拼的。已经申请退款，平台判了缺货描述不符。</p>
+          <footer>饿了么用户 · 11-04 · 指向黑椒鸡排盖饭</footer>
+        </blockquote>
+        <blockquote class="quote mid">
+          <p>酱汁挂勺，拌开后每粒饭都裹上了。缺点是黑椒味偏淡，喜欢冲的得自己加黑胡椒。总体会再点。</p>
+          <footer>小红书用户 · 11-02 · 指向黑椒双拼盖饭</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="block" id="news" aria-labelledby="h-news">
+      <div class="block-head">
+        <h2 id="h-news"><span class="num">09</span>相关资讯：平台规则与商品页变动</h2>
+        <p>只记已发生并可回查的动作，推断另作标注。</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>美团外卖 11 月起要求盖饭类商品页标注主料克数</h3>
+          <p>11 月 1 日的商家后台公告要求「含肉盖饭」填写主料重量区间，17 家收录门店中 6 家已填，其余仍为空白。推测未填门店将在下次审核被退回。</p>
+          <p class="meta">来源：商家后台公告 · 11-01</p>
+        </div>
+        <div class="news-item">
+          <h3>饿了么「铁板系列」商品说明补入切法字段</h3>
+          <p>10 月 28 日上架的 3 个牛柳饭链接写明「逆纹切条、宽约 8 毫米」，此前同类页面无此字段。实测 6 家中仍 4 家顺切。</p>
+          <p class="meta">来源：商品页截图 · 10-28</p>
+        </div>
+        <div class="news-item">
+          <h3>3 家门店停售黑椒猪扒盖饭但菜单未下架</h3>
+          <p>下单后电话告知缺货，页面仍显示在售。已从本期榜单移除，对应 11 月 5 日的下架记录。</p>
+          <p class="meta">来源：下单录音 · 11-05</p>
+        </div>
+        <div class="news-item">
+          <h3>雨天配送时长统计口径调整</h3>
+          <p>11 月 3 日平台把「预计送达」由区间改为单点时间，同一门店雨天与晴天的差值从 9 分钟变为 11 分钟，可比性下降。</p>
+          <p class="meta">来源：应用内显示对比 · 11-03</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="rank" aria-labelledby="h-rank">
+      <div class="block-head">
+        <h2 id="h-rank"><span class="num">10</span>性价比榜单：实付价前十与对应份量</h2>
+        <p>按「实付价 ÷ 肉排克数」排序，价格取 10 月 10 日至 11 月 8 日的下单记录。</p>
+      </div>
+      <ol class="timeline">
+        <li><time>第 1 名 · 实付 13.9 元</time><b>鸡排 128 g，米饭 300 g</b><p>单克肉价约 0.109 元。含 3 元新客红包，无红包时 16.9 元仍居前列。</p></li>
+        <li><time>第 2 名 · 实付 15.6 元</time><b>猪扒 132 g，米饭 285 g</b><p>单克肉价约 0.118 元。外壳回软时间 26 分钟，略早于同类。</p></li>
+        <li><time>第 3 名 · 实付 17.2 元</time><b>牛柳 110 g，米饭 310 g</b><p>单克肉价约 0.156 元。牛柳顺切，咀嚼成本高。</p></li>
+        <li><time>第 4 名 · 实付 18.0 元</time><b>双拼合计 140 g，米饭 320 g</b><p>单克肉价约 0.129 元。两种酱汁串味，评分 4.1。</p></li>
+        <li><time>第 5 名 · 实付 19.4 元</time><b>鸡排 155 g，米饭 295 g</b><p>单克肉价约 0.125 元。整块腿排，无重组。配送 2.8 公里仍保持外观完整。</p></li>
+      </ol>
+      <p class="meta">注：榜单只覆盖 5 条，第 6 至 10 名因缺少克数标注未纳入，待商家补填后更新。</p>
+    </section>
+
+    <section class="block" id="trust" aria-labelledby="h-trust">
+      <div class="block-head">
+        <h2 id="h-trust"><span class="num">11</span>可信度分层：三类信息各自能信到什么程度</h2>
+        <p>把记录拆成可核对结构，避免把断言混进实拍。</p>
+      </div>
+      <div class="panel-grid">
+        <div class="trust high">
+          <span class="lv">高</span>
+          <h3>实拍图与称重记录</h3>
+          <p>有拆盒时间、米饭克数、肉排厚度的，共 27 条。带一次性勺和刻度参照物，误差在 5 g 内。</p>
+        </div>
+        <div class="trust mid">
+          <span class="lv">中</span>
+          <h3>菜单页字段与平台公告</h3>
+          <p>用截图存档的 14 条，包括主料克数、切法说明。字段可能被商家随时修改，需注明抓取日期。</p>
+        </div>
+        <div class="trust low">
+          <span class="lv">低</span>
+          <h3>口味与「值不值」的评价</h3>
+          <p>评论区的咸淡判断受个人阈值影响，单独看不作结论。5 条以上指向同一细节时才提升权重。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="recs" aria-labelledby="h-recs">
+      <div class="block-head">
+        <h2 id="h-recs"><span class="num">12</span>相关推荐</h2>
+        <p>下一站可能用到的条目，均对应当前收录范围。</p>
+      </div>
+      <div>
+        <a class="tag" href="/#deep">黑椒酱汁咸度分级</a>
+        <a class="tag" href="/#guide">午高峰出餐时段表</a>
+        <a class="tag" href="/#overview">黑椒牛柳盖饭切法对照</a>
+        <a class="tag" href="/#rank">鸡排单克肉价榜</a>
+        <a class="tag" href="/#news">盖饭主料克数标注新规</a>
+        <a class="tag" href="/#faq">配送后结块处理</a>
+        <a class="tag" href="/#trust">实拍可信度三层</a>
+        <a class="tag" href="/#comments">猪扒回软时间记录</a>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="side" aria-label="侧栏">
+    <div class="side-card">
+      <h2>本页导航</h2>
+      <ul class="side-nav" id="sideNav">
+        <li><a href="/#overview">领域概览</a></li>
+        <li><a href="/#picks">精选内容推荐</a></li>
+        <li><a href="/#updates">最新更新</a></li>
+        <li><a href="/#cats">分类入口</a></li>
+        <li><a href="/#deep">深度解析</a></li>
+        <li><a href="/#guide">体验指南</a></li>
+        <li><a href="/#faq">常见问题</a></li>
+        <li><a href="/#comments">用户评论</a></li>
+        <li><a href="/#news">相关资讯</a></li>
+        <li><a href="/#rank">性价比榜单</a></li>
+        <li><a href="/#trust">可信度分层</a></li>
+        <li><a href="/#recs">相关推荐</a></li>
+      </ul>
+    </div>
+    <div class="side-card">
+      <h2>本期热度</h2>
+      <ol class="side-rank">
+        <li>黑椒鸡排盖饭<span>12 家</span></li>
+        <li>酱汁结块<span>34%</span></li>
+        <li>满减实付对照<span>41 单</span></li>
+        <li>牛柳切法<span>6 家</span></li>
+        <li>雨天配送<span>11 分钟</span></li>
+      </ol>
+    </div>
+    <div class="side-card">
+      <h2>采样说明</h2>
+      <p class="meta" style="line-height:1.7">采样窗口 2026-10-10 至 2026-11-08。来源为美团外卖、饿了么、大众点评、小红书、抖音的公开页面与下单记录。门店名与账号名为示例数据，价格随平台活动变动。</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <svg viewBox="0 0 64 64" width="34" height="34" role="img" aria-label="黑椒盖饭yandex 图形标志">
+            <rect width="64" height="64" rx="14" fill="#2f2417"/>
+            <circle cx="32" cy="32" r="19" fill="none" stroke="#e8b344" stroke-width="3.4"/>
+            <circle cx="32" cy="32" r="6.6" fill="#e8b344"/>
+            <path d="M32 7v7M32 50v7M7 32h7M50 32h7M14.3 14.3l5 5M44.7 44.7l5 5M49.7 14.3l-5 5M19.3 44.7l-5 5" stroke="#e8b344" stroke-width="3.4" stroke-linecap="round"/>
+          </svg>
+          <span class="brand-txt">
+            <span class="brand-name">黑椒盖饭yandex</span>
+            <span class="brand-sub">RICE · INDEX</span>
+          </span>
+        </div>
+        <p>把外卖盖饭的克数、咸度和回软时间摊开写，供点单前逐条比对。</p>
+        <p class="meta">页脚更新时间：2026-11-08，对应「最新更新」中的 6 条修订。</p>
+      </div>
+      <div>
+        <h3>餐品条目</h3>
+        <ul class="foot-links">
+          <li><a href="/#overview">黑椒鸡排盖饭</a></li>
+          <li><a href="/#overview">黑椒牛柳盖饭</a></li>
+          <li><a href="/#picks">黑椒猪扒盖饭</a></li>
+          <li><a href="/#picks">黑椒双拼盖饭</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>判断工具</h3>
+        <ul class="foot-links">
+          <li><a href="/#deep">酱汁稠度分级</a></li>
+          <li><a href="/#guide">点单五步</a></li>
+          <li><a href="/#trust">可信度分层</a></li>
+          <li><a href="/#faq">结块问答</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>数据与榜单</h3>
+        <ul class="foot-links">
+          <li><a href="/#rank">性价比前十</a></li>
+          <li><a href="/#news">平台规则变动</a></li>
+          <li><a href="/#updates">更新日志</a></li>
+          <li><a href="/#comments">用户评论</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 黑椒盖饭yandex · 页面内门店、账号与价格为示例数据，不构成购买建议</span>
+      <span>采样窗口 2026-10-10 至 2026-11-08</span>
+    </div>
+  </div>
+</footer>
+
+<button id="to-top" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var stickyZone=document.querySelector('.sticky-zone');
+  function syncSticky(){
+    var h=stickyZone?stickyZone.offsetHeight:0;
+    document.documentElement.style.setProperty('--sticky-h',h+'px');
+  }
+  syncSticky();
+  window.addEventListener('resize',syncSticky);
+
+  var menuBtn=document.getElementById('menuBtn');
+  var mainNav=document.getElementById('mainNav');
+  if(menuBtn&&mainNav){
+    menuBtn.addEventListener('click',function(){
+      var open=mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    mainNav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=720){
+        mainNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var q=document.getElementById('q');
+  var fb=document.getElementById('searchFb');
+  var btn=document.getElementById('searchBtn');
+  var allBlocks=Array.prototype.slice.call(document.querySelectorAll('main section.block'));
+  function doSearch(){
+    var kw=(q.value||'').trim().toLowerCase();
+    if(!kw){fb.hidden=true;return;}
+    var hits=[];
+    allBlocks.forEach(function(sec){
+      var txt=sec.textContent.toLowerCase();
+      if(txt.indexOf(kw)>-1){
+        var h2=sec.querySelector('h2');
+        hits.push(h2?h2.textContent.replace(/^\d+/,''):sec.id);
+      }
+    });
+    if(hits.length){
+      fb.hidden=false;
+      fb.style.color='#4c6b4a';
+      fb.textContent='找到 '+hits.length+' 个相关板块：'+hits.slice(0,4).join('、')+(hits.length>4?' 等':'');
+    }else{
+      fb.hidden=false;
+      fb.style.color='#a4432c';
+      fb.textContent='没有匹配结果，试试「鸡排」「结块」「满减」「牛柳」等词。';
+    }
+  }
+  if(btn){btn.addEventListener('click',doSearch);}
+  if(q){q.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doSearch();}});}
+
+  var links=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var id=en.target.id;
+        links.forEach(function(a){
+          a.classList.toggle('active',a.getAttribute('href')==='/# '+id.replace(/\s/g,'') || a.getAttribute('href')==='/#'+id);
+        });
+      }
+    });
+  },{rootMargin:'-'+ (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sticky-h'))||60) +'px 0px -70% 0px'});
+  allBlocks.forEach(function(s){obs.observe(s);});
+
+  var toTop=document.getElementById('to-top');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>600){toTop.classList.add('show');}
+    else{toTop.classList.remove('show');}
+  },{passive:true});
+  toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"黑椒盖饭yandex",
+  "description":"外卖盖饭的克数、酱汁咸度与配送回软时间记录，含黑椒鸡排盖饭、黑椒牛柳盖饭等条目对照。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"黑椒鸡排盖饭送到后酱汁结成一坨，是正常现象吗","acceptedAnswer":{"@type":"Answer","text":"酱汁含水量高、配送超过 25 分钟时容易结块，属于常见但可避免的情况。挂勺稠度的酱汁在同样时长下结块率约 8%，直泻档约 82%。"}},
+    {"@type":"Question","name":"黑椒牛柳盖饭和黑椒猪扒盖饭哪个更适合重口味","acceptedAnswer":{"@type":"Answer","text":"牛柳款的黑椒颗粒多为现磨，辛香更冲；猪扒款靠腌料入味，咸味更整齐。直泻档牛柳盖饭平均约 950 mg/份，猪扒款约 880 mg/份。"}},
+    {"@type":"Question","name":"外卖平台上写厚切 1.5 cm 的鸡排，值不值得多付 6 元","acceptedAnswer":{"@type":"Answer","text":"前 10 分钟口感更嫩，但 1.5 cm 组 4 家中有 3 家在配送途中回软。配送距离超过 3 公里时，多付的 6 元买到的是更长的等待与更软的外壳。"}},
+    {"@type":"Question","name":"满减 8 元的门店一定比满减 5 元的便宜吗","acceptedAnswer":{"@type":"Answer","text":"不一定。41 份订单里，减 8 元档有 6 单实付高于减 5 元档平均值，原因是部分门店同步上调了单份标价 3 元。判断标准是实付价。"}},
+    {"@type":"Question","name":"黑椒盖饭加一个煎蛋一般加多少钱","acceptedAnswer":{"@type":"Answer","text":"收录的 18 款餐品中，加煎蛋标价 2—5 元，中位数 3 元。加价 5 元的多为现煎双面蛋，加价 2 元的多为预制冷冻蛋皮。"}},
+    {"@type":"Question","name":"雨天点黑椒盖饭要注意什么","acceptedAnswer":{"@type":"Answer","text":"雨天配送时间平均延长 11 分钟，直泻档酱汁的结块概率从 82% 升到近乎必然。可选挂勺档门店，或提前到 10:30 前下单。"}}
+  ]
+}
+</script>
+</body>
+          </html>

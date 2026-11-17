@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>糖心安安老师-烘焙甜点课程与配方笔记</title>
+<meta name="description" content="糖心安安老师专注家庭烘焙甜点教学，整理戚风蛋糕、可露丽、马卡龙等配方比例、打发状态与烤箱温度控制，附课程时间线与学员实操问答记录。">
+<meta name="keywords" content="糖心安安老师">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b3432b'/%3E%3Cpath d='M32 16c8 0 14 6 14 13 0 9-8 17-14 21-6-4-14-12-14-21 0-7 6-13 14-13z' fill='%23f7d9a8'/%3E%3Ccircle cx='32' cy='30' r='5' fill='%23b3432b'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "糖心安安老师",
+  "inLanguage": "zh-CN",
+  "description": "家庭烘焙甜点课程与配方笔记站点"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "戚风蛋糕塌腰是烤箱温度低还是蛋白打过头？", "acceptedAnswer": {"@type": "Answer", "text": "塌腰优先排查蛋白状态。蛋白打到干性偏硬、提起打蛋头出现短直尖角仍能弯动比较合适；打到絮状分离则必定塌。其次看烤箱实际温度，上下火150℃烤50分钟的6寸方案在未校准烤箱里常掉到135℃。"}},
+    {"@type": "Question", "name": "可露丽外皮蜂窝孔是面糊静置时间不够吗？", "acceptedAnswer": {"@type": "Answer", "text": "蜂窝多半来自高温冲击不够。可露丽入炉需240℃烤15分钟再降到180℃，模具内壁刷蜂蜡黄油层；面糊冷藏静置12小时以上是基础前提，但不是唯一原因。"}},
+    {"@type": "Question", "name": "马卡龙裙边出不来的三个常见原因", "acceptedAnswer": {"@type": "Answer", "text": "杏仁粉未过筛导致颗粒卡住膨胀、蛋白霜打太软撑不起外壳、晾皮不足表面湿黏，三者任一都会让裙边缺席。烤箱实际温度低于150℃也常见。"}},
+    {"@type": "Question", "name": "零基础学员第一节课通常做哪款甜点？", "acceptedAnswer": {"@type": "Answer", "text": "课程通常从玛德琳或可可曲奇开始，配方容错高、成品外形成功率高，用于熟悉黄油软化程度与面糊翻拌手法，第二节课才进入戚风。"}},
+    {"@type": "Question", "name": "糖浆温度计选哪种更适合家庭厨房？", "acceptedAnswer": {"@type": "Answer", "text": "选探头式电子温度计，探针长度10厘米以上，读数响应3秒以内。玻璃酒精温度计在意大利蛋白霜118℃节点上读数偏慢，误差常到5℃。"}}
+  ]
+}
+</script>
+<style>
+:root{
+  --c-primary:#b3432b;
+  --c-primary-dark:#8e3220;
+  --c-accent:#e9a83c;
+  --c-ink:#2b2320;
+  --c-ink-soft:#5b4f49;
+  --c-bg:#fdf8f2;
+  --c-card:#ffffff;
+  --c-line:#e6d9cc;
+  --c-tint:#f6ebdd;
+  --c-ok:#3f7a52;
+  --shadow-sm:0 1px 2px rgba(74,48,30,.08);
+  --shadow-md:0 4px 14px rgba(74,48,30,.10);
+  --r-sm:6px;--r-md:12px;--r-lg:18px;
+  --sp-1:6px;--sp-2:12px;--sp-3:18px;--sp-4:26px;--sp-5:38px;--sp-6:56px;
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --sticky-h:104px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--c-bg);
+  color:var(--c-ink);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--c-primary-dark);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;font-weight:700}
+h1{font-size:clamp(1.6rem,4.6vw,2.5rem)}
+h2{font-size:clamp(1.28rem,3vw,1.65rem)}
+h3{font-size:1.08rem}
+p{margin-bottom:.85em}
+ul,ol{padding-left:1.25em}
+section[id],div[id]{scroll-margin-top:calc(var(--sticky-h) + 12px)}
+
+/* ===== sticky stack ===== */
+.sticky-stack{position:sticky;top:0;z-index:80}
+.announce{
+  background:linear-gradient(90deg,var(--c-primary-dark),var(--c-primary));
+  color:#fff;font-size:.86rem;text-align:center;
+  padding:var(--sp-1) var(--sp-2);
+}
+.announce strong{color:#ffe0b8;font-weight:700}
+.announce a{color:#ffe9cc;text-decoration:underline}
+.site-header{
+  background:rgba(253,248,242,.97);
+  border-bottom:1px solid var(--c-line);
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(6px);
+}
+.header-inner{
+  max-width:1180px;margin:0 auto;padding:10px var(--sp-3);
+  display:flex;align-items:center;gap:var(--sp-3);flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{width:38px;height:38px;flex:0 0 38px}
+.brand-text{font-weight:800;font-size:1.06rem;color:var(--c-ink);letter-spacing:.02em}
+.brand-text small{display:block;font-size:.68rem;font-weight:500;color:var(--c-ink-soft);letter-spacing:.14em}
+.header-nav{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap}
+.header-nav a{font-size:.9rem;color:var(--c-ink-soft);padding:4px 2px}
+.header-nav a:hover{color:var(--c-primary)}
+.search-wrap{display:flex;align-items:center;gap:6px}
+.search-wrap input{
+  width:150px;padding:6px 10px;border:1px solid var(--c-line);
+  border-radius:var(--r-sm);background:#fff;font-family:inherit;font-size:.86rem;
+}
+.search-wrap input:focus{outline:2px solid var(--c-accent);outline-offset:1px}
+.search-wrap button{
+  font-family:inherit;font-size:.84rem;padding:6px 11px;
+  border:1px solid var(--c-primary);background:var(--c-primary);color:#fff;
+  border-radius:var(--r-sm);cursor:pointer;
+}
+.search-wrap button:hover{background:var(--c-primary-dark)}
+.menu-toggle{
+  display:none;font-family:inherit;font-size:.88rem;padding:6px 12px;
+  border:1px solid var(--c-line);background:#fff;border-radius:var(--r-sm);cursor:pointer;
+}
+.menu-toggle:focus-visible,.search-wrap button:focus-visible,.header-nav a:focus-visible{
+  outline:2px solid var(--c-primary);outline-offset:2px;border-radius:4px;
+}
+.search-feedback{width:100%;font-size:.84rem;color:var(--c-primary-dark);min-height:0}
+.search-feedback:not(:empty){padding-top:4px}
+
+/* ===== hero ===== */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(233,168,60,.22),transparent 46%),
+    radial-gradient(circle at 12% 78%,rgba(179,67,43,.13),transparent 52%),
+    var(--c-tint);
+  border-bottom:1px solid var(--c-line);
+}
+.hero-inner{
+  max-width:1180px;margin:0 auto;padding:var(--sp-5) var(--sp-3) var(--sp-6);
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:var(--sp-5);align-items:center;
+}
+.hero-eyebrow{
+  display:inline-block;font-size:.78rem;letter-spacing:.16em;
+  color:var(--c-primary-dark);background:#fff;
+  border:1px solid var(--c-line);border-radius:999px;
+  padding:4px 14px;margin-bottom:var(--sp-2);
+}
+.hero h1{margin-bottom:var(--sp-2);color:var(--c-ink)}
+.hero-lead{font-size:1.02rem;color:var(--c-ink-soft);max-width:34em}
+.hero-actions{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin-top:var(--sp-3)}
+.btn{
+  display:inline-block;padding:10px 20px;border-radius:var(--r-sm);
+  font-size:.92rem;font-weight:600;transition:transform .18s ease,background .18s ease;
+}
+.btn-primary{background:var(--c-primary);color:#fff}
+.btn-primary:hover{background:var(--c-primary-dark);text-decoration:none;transform:translateY(-2px)}
+.btn-ghost{background:#fff;color:var(--c-primary-dark);border:1px solid var(--c-line)}
+.btn-ghost:hover{border-color:var(--c-primary);text-decoration:none;transform:translateY(-2px)}
+.hero-visual{position:relative;display:flex;justify-content:center}
+.hero-visual svg{width:100%;max-width:340px;height:auto}
+.hero-stats{
+  display:flex;gap:var(--sp-4);margin-top:var(--sp-4);flex-wrap:wrap;
+  border-top:1px dashed var(--c-line);padding-top:var(--sp-3);
+}
+.hero-stats div strong{display:block;font-size:1.28rem;color:var(--c-primary-dark)}
+.hero-stats div span{font-size:.8rem;color:var(--c-ink-soft)}
+
+/* ===== layout ===== */
+.layout{
+  max-width:1180px;margin:0 auto;padding:var(--sp-5) var(--sp-3);
+  display:grid;grid-template-columns:minmax(0,1fr) 288px;gap:var(--sp-5);
+  align-items:start;
+}
+.main-col{min-width:0}
+.side-col{min-width:0;position:sticky;top:calc(var(--sticky-h) + 18px)}
+.panel{
+  background:var(--c-card);border:1px solid var(--c-line);
+  border-radius:var(--r-md);box-shadow:var(--shadow-sm);
+  padding:var(--sp-4);margin-bottom:var(--sp-4);
+}
+.panel > h2{margin-bottom:var(--sp-1)}
+.panel-sub{font-size:.86rem;color:var(--c-ink-soft);margin-bottom:var(--sp-3)}
+.sec-head{display:flex;align-items:baseline;gap:var(--sp-2);flex-wrap:wrap;margin-bottom:var(--sp-3)}
+.sec-head .tag{
+  font-size:.72rem;letter-spacing:.08em;color:var(--c-primary-dark);
+  background:var(--c-tint);border-radius:999px;padding:2px 10px;
+}
+.sec-note{font-size:.86rem;color:var(--c-ink-soft);margin:-6px 0 var(--sp-3)}
+
+/* ===== overview grid ===== */
+.overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-2)}
+.ov-card{
+  border:1px solid var(--c-line);border-radius:var(--r-sm);
+  padding:var(--sp-3);background:#fffdfa;transition:transform .18s ease,box-shadow .18s ease;
+}
+.ov-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.ov-card h3{font-size:.98rem;margin-bottom:4px;color:var(--c-ink)}
+.ov-card p{font-size:.84rem;color:var(--c-ink-soft);margin:0}
+.ov-card .num{font-size:.72rem;color:var(--c-primary);font-weight:700;letter-spacing:.06em}
+
+/* ===== cards grid ===== */
+.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3)}
+.card{
+  border:1px solid var(--c-line);border-radius:var(--r-md);overflow:hidden;background:#fff;
+  display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.card img{width:100%;height:150px;object-fit:cover;background:var(--c-tint)}
+.card-body{padding:var(--sp-3);display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:1rem}
+.card p{font-size:.85rem;color:var(--c-ink-soft);margin:0}
+.card .meta{font-size:.76rem;color:var(--c-primary-dark);margin-top:auto}
+.badge{
+  display:inline-block;font-size:.7rem;padding:1px 8px;border-radius:999px;
+  background:var(--c-tint);color:var(--c-primary-dark);margin-right:4px;
+}
+
+/* ===== list ===== */
+.updates{list-style:none;padding:0}
+.updates li{
+  display:grid;grid-template-columns:88px minmax(0,1fr);gap:var(--sp-2);
+  padding:10px 0;border-bottom:1px dashed var(--c-line);font-size:.9rem;
+}
+.updates li:last-child{border-bottom:none}
+.updates time{font-size:.8rem;color:var(--c-primary-dark);font-weight:600}
+.updates span{color:var(--c-ink-soft)}
+
+/* ===== channel tags ===== */
+.channels{display:flex;flex-wrap:wrap;gap:8px}
+.channels a{
+  font-size:.86rem;border:1px solid var(--c-line);border-radius:999px;
+  padding:6px 14px;background:#fff;color:var(--c-ink);transition:border .18s,background .18s;
+}
+.channels a:hover{background:var(--c-tint);border-color:var(--c-primary);text-decoration:none}
+
+/* ===== deep read ===== */
+.deep h3{margin:var(--sp-4) 0 var(--sp-2);padding-left:10px;border-left:4px solid var(--c-accent)}
+.deep h3:first-of-type{margin-top:0}
+.deep p{font-size:.96rem}
+.quote-block{
+  background:#fffdf7;border:1px solid var(--c-line);border-left:4px solid var(--c-primary);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:var(--sp-3);
+  font-size:.92rem;color:var(--c-ink-soft);margin:var(--sp-3) 0;
+}
+.compare{width:100%;border-collapse:collapse;font-size:.85rem;margin:var(--sp-3) 0}
+.compare th,.compare td{border:1px solid var(--c-line);padding:8px 10px;text-align:left;vertical-align:top}
+.compare th{background:var(--c-tint);font-weight:700;color:var(--c-ink)}
+.timeline{list-style:none;padding:0;border-left:2px solid var(--c-line);margin-left:6px}
+.timeline li{position:relative;padding:0 0 var(--sp-3) var(--sp-3);font-size:.9rem}
+.timeline li::before{
+  content:"";position:absolute;left:-6px;top:8px;width:10px;height:10px;
+  border-radius:50%;background:var(--c-accent);border:2px solid #fff;
+}
+.timeline time{display:block;font-size:.78rem;color:var(--c-primary-dark);font-weight:700}
+
+/* ===== steps ===== */
+.steps{list-style:none;padding:0;counter-reset:st}
+.steps li{
+  counter-increment:st;position:relative;padding:0 0 var(--sp-3) 46px;font-size:.9rem;
+}
+.steps li::before{
+  content:counter(st);position:absolute;left:0;top:0;width:30px;height:30px;
+  display:grid;place-items:center;border-radius:50%;
+  background:var(--c-primary);color:#fff;font-weight:700;font-size:.86rem;
+}
+.steps li strong{display:block;color:var(--c-ink)}
+
+/* ===== faq ===== */
+details{
+  border:1px solid var(--c-line);border-radius:var(--r-sm);
+  padding:10px 14px;margin-bottom:8px;background:#fff;
+}
+details[open]{background:#fffdf7;border-color:var(--c-primary)}
+summary{
+  cursor:pointer;font-weight:600;font-size:.93rem;list-style:none;
+  display:flex;justify-content:space-between;gap:10px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--c-primary);font-weight:700}
+details[open] summary::after{content:"－"}
+details p{font-size:.88rem;color:var(--c-ink-soft);margin:10px 0 0}
+
+/* ===== reviews ===== */
+.reviews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-2)}
+.review{
+  border:1px solid var(--c-line);border-radius:var(--r-sm);
+  padding:var(--sp-3);background:#fffdfa;font-size:.87rem;
+}
+.review .who{font-weight:700;font-size:.84rem;color:var(--c-primary-dark);margin-bottom:4px}
+.review p{margin:0;color:var(--c-ink-soft)}
+.review .stars{color:var(--c-accent);letter-spacing:2px;font-size:.8rem}
+
+/* ===== ranking ===== */
+.rank{list-style:none;padding:0;counter-reset:rk}
+.rank li{
+  counter-increment:rk;display:grid;grid-template-columns:34px minmax(0,1fr) auto;
+  gap:var(--sp-2);align-items:center;padding:10px 0;border-bottom:1px dashed var(--c-line);
+  font-size:.9rem;
+}
+.rank li:last-child{border-bottom:none}
+.rank li::before{
+  content:counter(rk);font-weight:800;color:var(--c-primary);font-size:1.02rem;
+}
+.rank .score{font-size:.8rem;color:var(--c-ink-soft);white-space:nowrap}
+
+/* ===== tags recommend ===== */
+.tagcloud{display:flex;flex-wrap:wrap;gap:8px}
+.tagcloud a{
+  font-size:.84rem;padding:5px 12px;border-radius:var(--r-sm);
+  background:var(--c-tint);color:var(--c-primary-dark);
+}
+.tagcloud a:hover{background:#f0dcc5;text-decoration:none}
+
+/* ===== sidebar ===== */
+.side-card{
+  background:var(--c-card);border:1px solid var(--c-line);border-radius:var(--r-md);
+  padding:var(--sp-3);margin-bottom:var(--sp-3);box-shadow:var(--shadow-sm);
+}
+.side-card h2{font-size:1rem;margin-bottom:var(--sp-2)}
+.side-nav{list-style:none;padding:0;font-size:.88rem}
+.side-nav a{
+  display:block;padding:6px 10px;border-radius:var(--r-sm);color:var(--c-ink-soft);
+  border-left:3px solid transparent;transition:background .18s,color .18s;
+}
+.side-nav a:hover{background:var(--c-tint);text-decoration:none}
+.side-nav a.active{
+  color:var(--c-primary-dark);background:var(--c-tint);
+  border-left-color:var(--c-primary);font-weight:700;
+}
+.side-list{list-style:none;padding:0;font-size:.86rem}
+.side-list li{padding:7px 0;border-bottom:1px dashed var(--c-line)}
+.side-list li:last-child{border-bottom:none}
+.side-list small{display:block;color:var(--c-ink-soft);font-size:.76rem}
+
+/* ===== footer ===== */
+.site-footer{
+  background:#2b201b;color:#e9dfd5;margin-top:var(--sp-5);padding:var(--sp-5) var(--sp-3) var(--sp-3);
+}
+.footer-inner{max-width:1180px;margin:0 auto}
+.footer-top{
+  display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));
+  gap:var(--sp-4);padding-bottom:var(--sp-4);border-bottom:1px solid #4a3a31;
+}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.footer-brand .brand-mark{width:34px;height:34px}
+.footer-brand strong{font-size:1.05rem;color:#fff}
+.footer-brand small{display:block;color:#c6b5a8;font-size:.72rem;letter-spacing:.12em}
+.site-footer p{font-size:.86rem;color:#c6b5a8;margin:0}
+.footer-col h3{font-size:.92rem;color:#fff;margin-bottom:10px}
+.footer-col ul{list-style:none;padding:0;font-size:.85rem}
+.footer-col li{padding:4px 0}
+.footer-col a{color:#d6c7ba}
+.footer-col a:hover{color:var(--c-accent)}
+.footer-bottom{
+  padding-top:var(--sp-3);font-size:.8rem;color:#a8988c;
+  display:flex;justify-content:space-between;gap:var(--sp-2);flex-wrap:wrap;
+}
+
+/* ===== back to top ===== */
+.to-top{
+  position:fixed;right:18px;bottom:18px;z-index:90;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--c-line);
+  background:#fff;color:var(--c-primary-dark);font-size:1.1rem;cursor:pointer;
+  box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;
+}
+.to-top.show{opacity:1;visibility:visible}
+.to-top:focus-visible{outline:2px solid var(--c-primary);outline-offset:2px}
+
+/* ===== responsive ===== */
+@media (max-width:980px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .side-col{position:static;order:2}
+  .main-col{order:1}
+  .overview{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-inner{grid-template-columns:minmax(0,1fr);gap:var(--sp-4)}
+  .hero-visual{order:-1;max-height:220px}
+  .hero-visual svg{max-width:220px}
+  .footer-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media (max-width:720px){
+  :root{--sticky-h:96px}
+  .header-inner{padding:8px var(--sp-2)}
+  .header-nav{
+    display:none;width:100%;flex-direction:column;align-items:stretch;
+    gap:2px;padding-top:8px;
+  }
+  .header-nav.open{display:flex}
+  .header-nav a{padding:8px 6px;border-bottom:1px solid var(--c-line)}
+  .menu-toggle{display:inline-block;margin-left:auto}
+  .search-wrap{width:100%}
+  .search-wrap input{flex:1;width:auto}
+  .overview,.card-grid,.reviews{grid-template-columns:minmax(0,1fr)}
+  .footer-top{grid-template-columns:minmax(0,1fr)}
+  .hero-stats{gap:var(--sp-3)}
+  .panel{padding:var(--sp-3)}
+  .compare{font-size:.8rem}
+  .updates li{grid-template-columns:76px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important;animation:none !important}
+  .card:hover,.ov-card:hover,.btn:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-stack">
+  <div class="announce">
+    <strong>糖心安安老师</strong> 11月7日更新：6寸戚风烤箱实测温度对照表（上下火150℃/50分钟与140℃/58分钟两版数据），附蛋白打发状态图 6 张。
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#b3432b"/>
+          <path d="M32 16c8 0 14 6 14 13 0 9-8 17-14 21-6-4-14-12-14-21 0-7 6-13 14-13z" fill="#f7d9a8"/>
+          <circle cx="32" cy="30" r="5" fill="#b3432b"/>
+          <path d="M24 44h16" stroke="#f7d9a8" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-text">糖心安安老师<small>HOME BAKING NOTES</small></span>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">栏目菜单</button>
+      <nav class="header-nav" id="primaryNav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#picks">精选配方</a>
+        <a href="/#updates">更新记录</a>
+        <a href="/#channels">分类入口</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="search-wrap">
+        <label for="siteSearch" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">站内搜索</label>
+        <input type="search" id="siteSearch" placeholder="搜配方／温度／材料" autocomplete="off">
+        <button type="button" id="searchBtn">查找</button>
+      </div>
+      <div class="search-feedback" id="searchFeedback" role="status" aria-live="polite"></div>
+    </div>
+  </header>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="hero-eyebrow">家庭甜点 · 配方与实操</span>
+      <h1>糖心安安老师</h1>
+      <p class="hero-lead">从戚风蛋糕的蛋白霜状态、可露丽的蜂蜡模具，到马卡龙的晾皮窗口，记录每一款甜点的失败点与修正数据。课程按季度开班，配方笔记同步公开，烤箱温度一律标实测值而不是面板刻度。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/#picks">看本周精选配方</a>
+        <a class="btn btn-ghost" href="/#experience">零基础体验指南</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>126</strong><span>公开配方笔记</span></div>
+        <div><strong>38</strong><span>期线下课程</span></div>
+        <div><strong>11/07</strong><span>最近一次配方更新</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 300 300" role="img">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f3d3a4"/>
+            <stop offset="1" stop-color="#e0b077"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#b3432b"/>
+            <stop offset="1" stop-color="#8e3220"/>
+          </linearGradient>
+        </defs>
+        <circle cx="150" cy="150" r="128" fill="#fff" opacity=".55"/>
+        <ellipse cx="150" cy="232" rx="96" ry="18" fill="#d9c2a6" opacity=".7"/>
+        <path d="M96 158h108l-13 62a14 14 0 0 1-14 12h-54a14 14 0 0 1-14-12z" fill="url(#g1)" stroke="#c99a63" stroke-width="2"/>
+        <path d="M84 150h132a8 8 0 0 1 0 16H84a8 8 0 0 1 0-16z" fill="#fff6e8" stroke="#c99a63" stroke-width="2"/>
+        <path d="M112 150c0-26 17-44 38-44s38 18 38 44z" fill="#fff" stroke="#e0c39c" stroke-width="2"/>
+        <path d="M150 108c16 0 28 11 30 26-10-6-20-8-30-8s-20 2-30 8c2-15 14-26 30-26z" fill="url(#g2)"/>
+        <circle cx="150" cy="96" r="11" fill="#c0392b"/>
+        <path d="M150 85c4-8 12-9 16-5-5 5-11 6-16 5z" fill="#4c8a5a"/>
+        <g stroke="#c99a63" stroke-width="2" fill="none" opacity=".8">
+          <path d="M96 178h108"/>
+          <path d="M104 200h92"/>
+        </g>
+        <g fill="#b3432b" opacity=".75">
+          <circle cx="66" cy="96" r="4"/>
+          <circle cx="238" cy="118" r="5"/>
+          <circle cx="212" cy="232" r="4"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+  <main class="main-col">
+
+    <section class="panel" id="overview">
+      <div class="sec-head"><h2>领域概览：家庭烘焙甜点的六个知识面</h2><span class="tag">基础判断</span></div>
+      <p class="sec-note">按材料、设备、手法、配方比例、环境、成品判断划分，每格给出该方向最容易被忽略的变量。</p>
+      <div class="overview">
+        <div class="ov-card"><span class="num">01</span><h3>黄油软化判断</h3><p>18—20℃室温下，手指按压留有凹痕但仍能整块拿起；超过24℃会出油，饼干摊薄。</p></div>
+        <div class="ov-card"><span class="num">02</span><h3>烤箱实际温度</h3><p>机械旋钮偏差常见15—25℃。用烤箱温度计放在中层，预热20分钟后读数才稳定。</p></div>
+        <div class="ov-card"><span class="num">03</span><h3>蛋白霜状态</h3><p>湿性、干性、硬性三档差的是打蛋头提起来的尖角形态，不只是时间。</p></div>
+        <div class="ov-card"><span class="num">04</span><h3>面粉筋度选择</h3><p>戚风用低筋粉蛋白质约8.5%，面包用高筋12%以上；中筋粉做曲奇问题不大。</p></div>
+        <div class="ov-card"><span class="num">05</span><h3>湿度与晾皮</h3><p>马卡龙晾皮需表面不粘手，梅雨天常需40分钟以上，空调房可缩到15分钟。</p></div>
+        <div class="ov-card"><span class="num">06</span><h3>成品回潮</h3><p>可露丽出炉后3小时外皮最脆，密封过夜会软化，课程建议尽快食用。</p></div>
+      </div>
+    </section>
+
+    <section class="panel" id="picks">
+      <div class="sec-head"><h2>精选内容推荐：本周四个可直接上手的配方</h2><span class="tag">2026-11-07 版</span></div>
+      <div class="card-grid">
+        <article class="card">
+          <img src="https://picsum.photos/seed/chiffon6/640/360" width="640" height="360" loading="lazy" alt="刚脱模的6寸原味戚风蛋糕侧面高度约7厘米">
+          <div class="card-body">
+            <h3>6寸原味戚风蛋糕（低糖版）</h3>
+            <p>蛋黄糊用玉米油30克、牛奶35克、细砂糖15克；蛋白霜三次加糖共35克。实测烤箱150℃烤50分钟，中心高度回落约1厘米再出炉。</p>
+            <div><span class="badge">初学者</span><span class="badge">约3小时</span></div>
+            <div class="meta">更新于 2026-11-06 · 版本 v7</div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/seed/canelé12/640/360" width="640" height="360" loading="lazy" alt="深褐色可露丽外壳特写，表面有蜂窝状焦纹">
+          <div class="card-body">
+            <h3>可露丽蜂蜡涂层与高温冲击</h3>
+            <p>面糊冷藏静置14小时，模具内壁抹蜂蜡黄油1:1液。240℃烤15分钟后降到180℃，蜂蜡厚度决定蜂窝孔的粗细。</p>
+            <div><span class="badge">进阶</span><span class="badge">需模具</span></div>
+            <div class="meta">更新于 2026-11-05 · 版本 v4</div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/seed/macaron88/640/360" width="640" height="360" loading="lazy" alt="粉色马卡龙排列在晾网上，裙边完整">
+          <div class="card-body">
+            <h3>意式马卡龙 118℃糖浆版</h3>
+            <p>杏仁粉与糖粉过筛两遍，蛋白霜以118℃糖浆冲入，挤好后静置晾皮至不粘手。烤箱实测148℃，烤14分钟。</p>
+            <div><span class="badge">进阶</span><span class="badge">温度计必备</span></div>
+            <div class="meta">更新于 2026-11-04 · 版本 v5</div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/seed/madeleine31/640/360" width="640" height="360" loading="lazy" alt="贝壳形玛德琳蛋糕整齐排在烤盘上，边缘微焦">
+          <div class="card-body">
+            <h3>玛德琳的胖肚子条件</h3>
+            <p>面糊冷藏1小时后入模，模具预先刷黄油撒粉并冷冻10分钟。烤箱200℃烤8分钟，中心凸起靠的是冷面糊碰到热模具的瞬间。</p>
+            <div><span class="badge">零基础</span><span class="badge">40分钟</span></div>
+            <div class="meta">更新于 2026-11-03 · 版本 v3</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="updates">
+      <div class="sec-head"><h2>最新更新：配方修订与课程记录</h2><span class="tag">近30天</span></div>
+      <ul class="updates">
+        <li><time datetime="2026-11-07">11月7日</time><span>公开6寸戚风烤箱实测温度对照表，两版烤温数据及蛋白打发状态图6张。</span></li>
+        <li><time datetime="2026-11-06">11月6日</time><span>戚风配方v7修改：细砂糖由40克降到35克，蛋黄糊牛奶增加5克。</span></li>
+        <li><time datetime="2026-11-05">11月5日</time><span>可露丽模具蜂蜡涂层比例从1:2改为1:1，附12个模具使用者反馈。</span></li>
+        <li><time datetime="2026-11-04">11月4日</time><span>意式马卡龙页面补充了烤箱实测148℃与面板160℃的差异说明。</span></li>
+        <li><time datetime="2026-11-02">11月2日</time><span>第38期周末班结束，8名学员完成马卡龙考核，4人裙边合格。</span></li>
+        <li><time datetime="2026-10-30">10月30日</time><span>补充曲奇黄油软化温度实验：18℃与24℃下摊薄面积差约28%。</span></li>
+        <li><time datetime="2026-10-24">10月24日</time><span>新增《家庭烤箱温差自测方法》，推荐探头式温度计读数流程。</span></li>
+        <li><time datetime="2026-10-18">10月18日</time><span>可露丽高温段说明修正：240℃段维持15分钟而非12分钟。</span></li>
+      </ul>
+    </section>
+
+    <section class="panel" id="channels">
+      <div class="sec-head"><h2>分类入口：按你要做的甜点找配方</h2><span class="tag">12个频道</span></div>
+      <p class="sec-note">频道名按实际搜索习惯命名，每个频道下笔记数量标注在括号内。</p>
+      <div class="channels">
+        <a href="/#picks">戚风蛋糕（9）</a>
+        <a href="/#picks">可露丽（6）</a>
+        <a href="/#picks">马卡龙（7）</a>
+        <a href="/#picks">玛德琳（4）</a>
+        <a href="/#deep">蛋白霜打发（5）</a>
+        <a href="/#deep">烤箱温度校准（5）</a>
+        <a href="/#experience">黄油软化温度（3）</a>
+        <a href="/#deep">模具选择与脱模（4）</a>
+        <a href="/#experience">零基础入门路线（3）</a>
+        <a href="/#faq">常见失败排查（8）</a>
+        <a href="/#guide">工具与温度计（4）</a>
+        <a href="/#ranking">年度配方榜单（1）</a>
+      </div>
+    </section>
+
+    <section class="panel deep" id="deep">
+      <div class="sec-head"><h2>深度解析：戚风塌腰的责任，八成不在“配方不对”</h2><span class="tag">可被反驳的判断</span></div>
+      <p>关于戚风塌腰，最流行的解释是“液体加多了”或者“配方本身不行”。按近两个月课程里23份失败样本看，这个说法站不住：同一份配方，在同一个学员手里连续三次失败，第四次只改了打发和出炉时机就成功了。配方不是变量，手法才是。</p>
+
+      <h3>判断一：蛋白霜打到“干性”还是“硬性”，差15秒就是两种结果</h3>
+      <p>10月26日的周末班做了对照。A组蛋白霜打到打蛋头提起成短直尖角、尖角根部仍有弹性，B组再打15秒，尖角出现絮状断裂。同一份面糊，A组6寸戚风出炉后倒扣冷却2小时，塌腰高度差1厘米以内；B组三个全部在中心下陷2—3厘米，切开内部有明显大气孔层。</p>
+      <div class="quote-block">可核对的说法：打发状态用“提起尖端能否弯动”判断，比看时间更可靠。不同功率打蛋器，达到干性峰值的时间从2分10秒到4分钟不等，机械按分钟数打极易过头。</div>
+
+      <h3>判断二：烤箱面板150℃不等于实际150℃，温差直接决定塌不塌</h3>
+      <p>10月24日发布的《家庭烤箱温差自测方法》记录了11台家用烤箱：面板设定150℃时，中层温度计读数最低132℃、最高163℃，平均142℃。低于140℃的烤箱，戚风烘烤时间要从50分钟延长到58—62分钟，否则中心未定型，一出炉就回缩。</p>
+      <table class="compare">
+        <caption style="caption-side:bottom;font-size:.78rem;color:#5b4f49;padding-top:6px">数据来源：10月24日至11月6日课程内11台烤箱实测记录</caption>
+        <thead><tr><th>烤箱</th><th>面板设定</th><th>中层实测</th><th>6寸戚风实际用时</th></tr></thead>
+        <tbody>
+          <tr><td>台式30L机械款</td><td>150℃</td><td>136℃</td><td>60分钟</td></tr>
+          <tr><td>嵌入式40L电子款</td><td>150℃</td><td>149℃</td><td>50分钟</td></tr>
+          <tr><td>风炉一体机</td><td>150℃</td><td>158℃</td><td>42分钟</td></tr>
+        </tbody>
+      </table>
+
+      <h3>判断三：出炉后那一下摔模和倒扣，时间窗只有几十秒</h3>
+      <p>11月2日统计的23份失败样本里，有6份成品表面完整、内部却湿黏，出模后底部凹陷。复盘发现共同点：出炉后放在台面上等了3分钟才震模、倒扣。热气在模具内壁回凝，蛋糕体与模具粘连，倒扣时被拉塌。正确做法是出炉立刻离地10厘米摔一下，马上倒扣在晾网上。</p>
+      <ol class="timeline">
+        <li><time>出炉 0 秒</time>戴手套取出，距离台面10厘米摔模一次</li>
+        <li><time>出炉 5—10 秒</time>倒扣在两个等高的杯子上，确保模具底部悬空</li>
+        <li><time>冷却 2 小时</time>完全冷却后再脱模，期间不要开烤箱门散热</li>
+      </ol>
+
+      <h3>判断四：蛋黄糊的乳化顺序影响的是口感，不是塌腰</h3>
+      <p>有学员把玉米油和牛奶先后顺序调换，结果成品湿润度确有差异，但对塌腰没有任何改善。10月18日修正的说明里写得很清楚：乳化彻底的标准是油水混合后呈乳白色、看不到油花，这一步影响组织细腻度，不承担结构支撑。把它当成塌腰主因，排查方向就偏了。</p>
+    </section>
+
+    <section class="panel" id="guide">
+      <div class="sec-head"><h2>体验指南：零基础第一节课怎么安排</h2><span class="tag">动手流程</span></div>
+      <ol class="steps">
+        <li><strong>先称料，不先预热</strong>电子秤精度1克，材料的误差在3克内影响不大。预热放第二，避免面糊做好干等。</li>
+        <li><strong>黄油提前1小时取出</strong>室温低于18℃时，黄油难软化，可切小块或隔温水15秒，但不可化成液体。</li>
+        <li><strong>第一节课做玛德琳</strong>容错高、模具固定、单批8个。重点练刷黄油撒粉和面糊入模高度。</li>
+        <li><strong>第二节课进戚风</strong>练蛋白霜判断与翻拌手法，比追求配方更值得花时间。</li>
+        <li><strong>第三节课做马卡龙</strong>涉及温度计与晾皮判断，放到最后。失败率高，但能集中暴露温度控制问题。</li>
+      </ol>
+      <p style="font-size:.86rem;color:var(--c-ink-soft);margin-top:8px">课程每期6人，材料包含在费用里。10月31日那期有学员自带模具，模具尺寸与课程不同，配方量需按模具容积换算，课前需说明。</p>
+    </section>
+
+    <section class="panel" id="faq">
+      <div class="sec-head"><h2>常见问题：失败点逐个核对</h2><span class="tag">可折叠</span></div>
+      <details>
+        <summary>戚风蛋糕塌腰是烤箱温度低还是蛋白打过头？</summary>
+        <p>先查蛋白状态。提起打蛋头，尖角短而能轻微弯动是合适的；尖角断裂、呈絮状则肯定塌。其次看实际温度，面板150℃而中层读数只有135℃的烤箱，6寸需要延长到58—62分钟。</p>
+      </details>
+      <details>
+        <summary>可露丽外皮蜂窝孔是面糊静置时间不够吗？</summary>
+        <p>蜂窝主要来自高温冲击。面糊需冷藏静置12小时以上，但入炉必须是240℃烤15分钟再降到180℃。模具内壁蜂蜡黄油涂层太薄，也会让表皮变平滑而不是蜂窝。11月5日把涂层比例改成了1:1。</p>
+      </details>
+      <details>
+        <summary>马卡龙裙边出不来的三个常见原因</summary>
+        <p>杏仁粉未过筛、蛋白霜打得太软、晾皮时间不足表面仍湿黏，三者任一都会让裙边缺席。另外烤箱实际温度低于145℃时，膨胀不充分，裙边也会小。</p>
+      </details>
+      <details>
+        <summary>零基础学员第一节课通常做哪款甜点？</summary>
+        <p>课程从玛德琳开始，成品外形成功率高，用于熟悉黄油软化与翻拌手法。第二节课进入戚风，第三节课才到马卡龙。</p>
+      </details>
+      <details>
+        <summary>糖浆温度计选哪种更适合家庭厨房？</summary>
+        <p>探头式电子温度计，探针长度10厘米以上，3秒内出读数。玻璃酒精温度计在意大利蛋白霜118℃节点上响应慢，实测误差可达5℃。</p>
+      </details>
+      <details>
+        <summary>6寸模具能不能直接换成8寸配方？</summary>
+        <p>不能等量替换。8寸模具容积约是6寸的1.8倍，材料需同比放大，烘烤时间延长10—15分钟，温度可降5℃。直接换会导致面糊过满、中心未熟。</p>
+      </details>
+    </section>
+
+    <section class="panel" id="reviews">
+      <div class="sec-head"><h2>用户评论：来自课程与配方页的反馈</h2><span class="tag">含中性意见</span></div>
+      <div class="reviews">
+        <div class="review"><div class="who">苏禾 <span class="stars">★★★★★</span></div><p>可露丽那篇蜂蜡1:1改了之后，我按新比例做了两批，蜂窝孔从零星几个变成一圈，模具是铜模12连。</p></div>
+        <div class="review"><div class="who">老周学烘焙 <span class="stars">★★★☆☆</span></div><p>戚风v7糖降到35克，我按配方做出来甜度偏低，家里小孩不太接受。配方本身没问题，是口味偏好。建议标个甜度参考。</p></div>
+        <div class="review"><div class="who">一颗栗子 <span class="stars">★★★★☆</span></div><p>10月26日那节课的蛋白霜对照很有用，我终于知道自己是打过头了。以前一直以为是模具问题，换了三个模具都没用。</p></div>
+        <div class="review"><div class="who">阿May <span class="stars">★★★★★</span></div><p>马卡龙晾皮那段写“空调房15分钟”，我在南方11月做还是需要30分钟以上，湿度差异确实大，但方法本身对。</p></div>
+        <div class="review"><div class="who">面包机退役 <span class="stars">★★☆☆☆</span></div><p>玛德琳烤8分钟，我的小烤箱把表面烤焦了，后面改成190℃才合适。配方给的是200℃，我觉得应该提一下不同烤箱要试。</p></div>
+        <div class="review"><div class="who">林折 <span class="stars">★★★★☆</span></div><p>温度计推荐那篇帮了大忙，之前用玻璃温度计做意式蛋白霜一直失败，换成探头式后118℃很稳。</p></div>
+      </div>
+    </section>
+
+    <section class="panel" id="news">
+      <div class="sec-head"><h2>相关资讯：课程与烘焙圈动态</h2><span class="tag">时间线</span></div>
+      <ul class="timeline">
+        <li><time>2026-11-07</time>第39期周末班开放预约，主题为马卡龙裙边攻坚，6个名额，材料含杏仁粉500克。</li>
+        <li><time>2026-11-05</time>可露丽模具团购结束，共发出铜模34套，附赠蜂蜡黄油配比卡。</li>
+        <li><time>2026-10-31</time>万圣节主题课上完成南瓜戚风与黑巧曲奇，学员自带模具需课前报尺寸。</li>
+        <li><time>2026-10-24</time>发布烤箱温差自测方法，已有学员反馈用家用烤箱实测偏差达22℃。</li>
+        <li><time>2026-10-18</time>更正可露丽高温段时间为15分钟，此前页面写12分钟，已同步更新三处引用。</li>
+      </ul>
+    </section>
+
+    <section class="panel" id="ranking">
+      <div class="sec-head"><h2>年度配方榜单：按学员复做率排序</h2><span class="tag">2026年1—10月</span></div>
+      <ol class="rank">
+        <li><span>6寸原味戚风蛋糕</span><span class="score">复做率 82%</span></li>
+        <li><span>玛德琳（柠檬皮屑版）</span><span class="score">复做率 76%</span></li>
+        <li><span>可露丽（蜂蜡涂层版）</span><span class="score">复做率 61%</span></li>
+        <li><span>可可曲奇（低糖）</span><span class="score">复做率 58%</span></li>
+        <li><span>意式马卡龙</span><span class="score">复做率 33%</span></li>
+      </ol>
+      <p style="font-size:.82rem;color:var(--c-ink-soft);margin-top:10px">复做率统计口径：学员在课程结束后60天内回传成品照片并注明使用配方，样本为2026年1月至10月的214人次。</p>
+    </section>
+
+    <section class="panel" id="recommend">
+      <div class="sec-head"><h2>相关推荐：你可能还想查的关键词</h2><span class="tag">标签索引</span></div>
+      <div class="tagcloud">
+        <a href="/#deep">戚风蛋糕塌腰怎么补救</a>
+        <a href="/#picks">可露丽模具蜂蜡涂层比例</a>
+        <a href="/#faq">马卡龙晾皮多久不粘手</a>
+        <a href="/#deep">烤箱实际温度怎么测</a>
+        <a href="/#guide">黄油软化到几度合适</a>
+        <a href="/#faq">6寸模具换8寸配方比例</a>
+        <a href="/#deep">蛋白霜打发状态图解</a>
+        <a href="/#guide">家庭烘焙入门工具清单</a>
+        <a href="/#faq">戚风出炉倒扣多久脱模</a>
+        <a href="/#ranking">零基础甜点课程怎么选</a>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="side-col">
+    <div class="side-card">
+      <h2>本页目录</h2>
+      <nav aria-label="页内目录">
+        <ul class="side-nav" id="sideNav">
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#picks">精选内容推荐</a></li>
+          <li><a href="/#updates">最新更新</a></li>
+          <li><a href="/#channels">分类入口</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#reviews">用户评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#ranking">年度配方榜单</a></li>
+          <li><a href="/#recommend">相关推荐</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="side-card">
+      <h2>本周课程余位</h2>
+      <ul class="side-list">
+        <li>11月8日 玛德琳入门<small>余 2 位 · 14:00—17:00</small></li>
+        <li>11月14日 戚风攻坚<small>余 4 位 · 13:30—17:30</small></li>
+        <li>11月21日 马卡龙裙边<small>已满 · 可候补</small></li>
+      </ul>
+    </div>
+    <div class="side-card">
+      <h2>最近被查最多的数据</h2>
+      <ul class="side-list">
+        <li>6寸戚风 150℃ / 50分钟<small>11月7日修订</small></li>
+        <li>可露丽 240℃ 转 180℃<small>11月5日修订</small></li>
+        <li>马卡龙实测 148℃ / 14分钟<small>11月4日修订</small></li>
+        <li>黄油软化 18—20℃<small>10月30日实验</small></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#b3432b"/>
+            <path d="M32 16c8 0 14 6 14 13 0 9-8 17-14 21-6-4-14-12-14-21 0-7 6-13 14-13z" fill="#f7d9a8"/>
+            <circle cx="32" cy="30" r="5" fill="#b3432b"/>
+          </svg>
+          <div><strong>糖心安安老师</strong><small>HOME BAKING NOTES</small></div>
+        </div>
+        <p>记录家庭甜点的配方比例、烤箱实测温度与失败修正过程，课程按季度开班，配方笔记同步公开。</p>
+      </div>
+      <div class="footer-col">
+        <h3>配方频道</h3>
+        <ul>
+          <li><a href="/#picks">戚风蛋糕</a></li>
+          <li><a href="/#picks">可露丽</a></li>
+          <li><a href="/#picks">马卡龙</a></li>
+          <li><a href="/#picks">玛德琳</a></li>
+          <li><a href="/#guide">工具与温度计</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>内容入口</h3>
+        <ul>
+          <li><a href="/#updates">最新更新</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#reviews">用户评论</a></li>
+          <li><a href="/#ranking">年度配方榜单</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>页面内配方、课程与评论均为示例数据，日期截至2026年11月8日；正文可核对更新项见11月7日、11月5日、11月4日三条记录。&copy; 2026 糖心安安老师</span>
+      <span>内容更新时间：2026-11-08</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var toggle=document.getElementById('menuToggle');
+  var nav=document.getElementById('primaryNav');
+  if(toggle&&nav){
+    toggle.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=720){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var input=document.getElementById('siteSearch');
+  var btn=document.getElementById('searchBtn');
+  var fb=document.getElementById('searchFeedback');
+
+  function doSearch(){
+    var q=(input.value||'').trim().toLowerCase();
+    if(!q){fb.textContent='请输入关键词，例如“戚风”“马卡龙”“温度”。';return;}
+    var hits=[];
+    document.querySelectorAll('main h2, main h3, main details summary, .tagcloud a, .channels a, .updates li span, .rank span').forEach(function(el){
+      var t=(el.textContent||'').toLowerCase();
+      if(t.indexOf(q)>-1){hits.push(el);}
+    });
+    if(hits.length===0){
+      fb.textContent='没有找到与「'+q+'」相关的条目，试试“戚风蛋糕”“蛋白霜”“蜂蜡”。';
+      return;
+    }
+    fb.textContent='找到 '+hits.length+' 处与「'+q+'」相关，已定位到第一处：'+hits[0].textContent.trim().slice(0,26);
+    hits[0].scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  if(btn){btn.addEventListener('click',doSearch);}
+  if(input){input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doSearch();}});}
+
+  var toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>420){toTop.classList.add('show');}
+    else{toTop.classList.remove('show');}
+  },{passive:true});
+  toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  var navLinks=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var targets=navLinks.map(function(a){
+    var id=a.getAttribute('href').split('#')[1];
+    return document.getElementById(id);
+  });
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var id=en.target.id;
+          navLinks.forEach(function(a){
+            a.classList.toggle('active',a.getAttribute('href')==='/#'.concat ? false : a.getAttribute('href')==='/'+'#'+id);
+          });
+        }
+      });
+    },{rootMargin:'-120px 0px -60% 0px',threshold:0});
+    targets.forEach(function(t){if(t)obs.observe(t);});
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小小绘推特合集-插画作品与更新归档</title>
+<meta name="description" content="小小绘推特合集整理插画师小小绘在推特发布的原创插画、角色设定与短篇漫画，按月归档时间线与主题分区，附截图说明、阅读顺序建议与常见问题解答。">
+<meta name="keywords" content="小小绘推特合集">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f26d3d'/%3E%3Cpath d='M18 44c6-2 8-8 8-14V16h6v14c0 4 2 6 5 6h5v8H29c-4 0-7-1-11-2z' fill='%23fff'/%3E%3Ccircle cx='45' cy='20' r='5' fill='%23ffd9c2'/%3E%3C/svg%3E">
+<style>
+:root{
+  --main:#e8603c;
+  --main-dark:#c94a29;
+  --main-soft:#fdece5;
+  --accent:#2f6f8f;
+  --accent-soft:#e8f2f6;
+  --ink:#221c19;
+  --ink-2:#4a403a;
+  --ink-3:#7a6f68;
+  --bg:#fbf8f5;
+  --card:#ffffff;
+  --line:#e6ddd5;
+  --line-soft:#f1eae3;
+  --radius-s:6px;
+  --radius-m:12px;
+  --radius-l:20px;
+  --shadow-s:0 1px 2px rgba(34,28,25,.06),0 2px 8px rgba(34,28,25,.05);
+  --shadow-m:0 2px 6px rgba(34,28,25,.07),0 10px 26px rgba(34,28,25,.07);
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;--sp-8:64px;
+  --fs-xs:12px;--fs-s:14px;--fs-m:16px;--fs-l:19px;--fs-xl:24px;--fs-2xl:31px;--fs-3xl:40px;
+  --sticky-offset:108px;
+  --font-sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--bg);
+  font-size:var(--fs-m);line-height:1.75;
+}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--main-dark)}
+h1,h2,h3,h4{line-height:1.35;margin:0;color:var(--ink)}
+p{margin:0 0 var(--sp-4)}
+ul,ol{margin:0 0 var(--sp-4);padding-left:1.25em}
+li{margin-bottom:var(--sp-2)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+section{scroll-margin-top:var(--sticky-offset)}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 var(--sp-5)}
+
+/* ===== 公告条 ===== */
+.announce{
+  position:sticky;top:0;z-index:60;
+  background:var(--ink);color:#f6efe9;font-size:var(--fs-s);
+  border-bottom:1px solid #00000022;
+}
+.announce .wrap{display:flex;align-items:center;gap:var(--sp-3);padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.announce .tag{
+  background:var(--main);color:#fff;border-radius:999px;padding:1px 10px;
+  font-size:var(--fs-xs);letter-spacing:.04em;flex:none;font-weight:600;
+}
+.announce p{margin:0;font-size:var(--fs-s);color:#f6efe9}
+.announce a{color:#ffd9c2}
+
+/* ===== 页头 ===== */
+.site-header{
+  position:sticky;top:37px;z-index:55;
+  background:rgba(251,248,245,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;gap:var(--sp-4);padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:var(--sp-3);flex:none;color:var(--ink)}
+.brand:hover{color:var(--ink)}
+.brand svg{width:40px;height:40px;flex:none}
+.brand-name{font-size:var(--fs-l);font-weight:700;letter-spacing:.02em}
+.brand-sub{display:block;font-size:11px;color:var(--ink-3);font-weight:400;letter-spacing:.08em}
+.main-nav{margin-left:auto;display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.main-nav a{
+  display:inline-block;padding:6px 10px;border-radius:var(--radius-s);
+  color:var(--ink-2);font-size:var(--fs-s);font-weight:500;
+}
+.main-nav a:hover{background:var(--main-soft);color:var(--main-dark)}
+.main-nav a.active{background:var(--main-soft);color:var(--main-dark)}
+.header-tools{display:flex;align-items:center;gap:var(--sp-2);flex:none}
+.search-box{position:relative;display:flex;align-items:center}
+.search-box input{
+  width:150px;padding:7px 30px 7px 12px;border:1px solid var(--line);
+  border-radius:999px;background:#fff;font-family:inherit;font-size:var(--fs-s);color:var(--ink);
+}
+.search-box input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.search-box button{
+  position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  border:0;background:transparent;cursor:pointer;padding:4px;line-height:0;border-radius:50%;
+}
+.search-box button:hover{background:var(--line-soft)}
+.search-status{
+  font-size:var(--fs-xs);color:var(--main-dark);width:100%;padding:0 var(--sp-5) 6px;
+  display:none;
+}
+.search-status.show{display:block}
+.menu-btn{
+  display:none;border:1px solid var(--line);background:#fff;border-radius:var(--radius-s);
+  padding:7px 10px;font-family:inherit;font-size:var(--fs-s);cursor:pointer;color:var(--ink-2);
+}
+
+/* ===== 首屏 ===== */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#fff4ee 0%,#fbf8f5 46%,#eef4f7 100%);
+  border-bottom:1px solid var(--line-soft);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp-7);
+  align-items:center;padding-top:var(--sp-7);padding-bottom:var(--sp-7);
+}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-xs);letter-spacing:.14em;
+  color:var(--main-dark);background:var(--main-soft);border-radius:999px;padding:4px 12px;margin-bottom:var(--sp-4);
+  font-weight:600;
+}
+.hero h1{font-size:var(--fs-3xl);letter-spacing:-.01em;margin-bottom:var(--sp-4)}
+.hero h1 .em{color:var(--main)}
+.hero-lead{
+  font-size:var(--fs-l);color:var(--ink-2);max-width:34em;margin-bottom:var(--sp-5);
+}
+.hero-meta{display:flex;flex-wrap:wrap;gap:var(--sp-5);margin-bottom:var(--sp-5)}
+.hero-stat{min-width:96px}
+.hero-stat b{display:block;font-size:var(--fs-xl);color:var(--main-dark);line-height:1.2}
+.hero-stat span{font-size:var(--fs-xs);color:var(--ink-3);letter-spacing:.04em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 22px;
+  font-size:var(--fs-s);font-weight:600;border:1px solid transparent;cursor:pointer;
+  font-family:inherit;transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn-primary{background:var(--main);color:#fff;box-shadow:0 4px 14px rgba(232,96,60,.28)}
+.btn-primary:hover{background:var(--main-dark);color:#fff;transform:translateY(-2px)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--main);color:var(--main-dark);transform:translateY(-2px)}
+.hero-visual{position:relative;min-height:320px}
+.hero-visual svg{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 30px rgba(34,28,25,.14))}
+.hero-note{
+  position:absolute;left:0;bottom:-6px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius-m);padding:8px 14px;font-size:var(--fs-xs);color:var(--ink-2);
+  box-shadow:var(--shadow-s);
+}
+
+/* ===== 主内容布局：双栏标准 ===== */
+.layout{
+  display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--sp-7);
+  padding-top:var(--sp-7);padding-bottom:var(--sp-8);align-items:start;
+}
+.main-col{min-width:0}
+.side-col{min-width:0;display:flex;flex-direction:column;gap:var(--sp-5)}
+.block{margin-bottom:var(--sp-8)}
+.block-head{margin-bottom:var(--sp-5)}
+.block-head h2{
+  font-size:var(--fs-2xl);letter-spacing:-.01em;margin-bottom:var(--sp-2);
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.block-head h2 .num{
+  font-size:var(--fs-s);color:var(--main);font-weight:700;letter-spacing:.1em;
+  border:1px solid var(--main);border-radius:var(--radius-s);padding:2px 8px;flex:none;
+}
+.block-head p{color:var(--ink-3);font-size:var(--fs-s);margin:0;max-width:52em}
+h3{font-size:var(--fs-l);margin-bottom:var(--sp-3)}
+h4{font-size:var(--fs-m);margin-bottom:var(--sp-2)}
+
+/* 卡片通用 */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);
+  box-shadow:var(--shadow-s);
+}
+.card-pad{padding:var(--sp-5)}
+.card h3 a{color:var(--ink)}
+.card h3 a:hover{color:var(--main-dark)}
+
+/* 领域概览：非对称组合 */
+.overview{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--sp-5)}
+.ov-lead{padding:var(--sp-5);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);box-shadow:var(--shadow-s)}
+.ov-lead p{color:var(--ink-2);font-size:var(--fs-s);margin-bottom:var(--sp-3)}
+.ov-lead p:last-child{margin-bottom:0}
+.ov-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--sp-4)}
+.pill{
+  display:inline-block;font-size:var(--fs-xs);padding:3px 10px;border-radius:999px;
+  background:var(--main-soft);color:var(--main-dark);border:1px solid #f6d3c5;
+}
+.pill.cool{background:var(--accent-soft);color:var(--accent);border-color:#cfe2ea}
+.ov-side{display:grid;gap:var(--sp-3);align-content:start}
+.ov-item{display:flex;gap:var(--sp-3);padding:var(--sp-4);background:#fff;border:1px solid var(--line);border-radius:var(--radius-m)}
+.ov-item b{font-size:var(--fs-s);display:block;margin-bottom:2px}
+.ov-item span{font-size:var(--fs-xs);color:var(--ink-3);line-height:1.6}
+.ov-dot{width:10px;height:10px;border-radius:50%;background:var(--main);flex:none;margin-top:7px}
+.ov-dot.b{background:var(--accent)}
+.ov-dot.c{background:#c9a227}
+
+/* 精选内容：网格卡片 */
+.grid-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4)}
+.gc{overflow:hidden;display:flex;flex-direction:column}
+.gc-img{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--line-soft)}
+.gc-img img{width:100%;height:100%;object-fit:cover}
+.gc-body{padding:var(--sp-4);display:flex;flex-direction:column;gap:6px;flex:1}
+.gc-body h3{font-size:var(--fs-m);margin:0}
+.gc-body p{font-size:var(--fs-s);color:var(--ink-3);margin:0}
+.gc-meta{display:flex;gap:10px;flex-wrap:wrap;font-size:var(--fs-xs);color:var(--ink-3);margin-top:auto;padding-top:6px}
+.gc-meta .k{color:var(--main-dark);font-weight:600}
+
+/* 最新更新：紧凑列表 + 时间线 */
+.timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--line);}
+.tl-item{position:relative;padding:0 0 var(--sp-4) var(--sp-5);margin:0}
+.tl-item::before{
+  content:"";position:absolute;left:-6px;top:8px;width:10px;height:10px;border-radius:50%;
+  background:#fff;border:2px solid var(--main);
+}
+.tl-time{font-size:var(--fs-xs);color:var(--main-dark);font-weight:600;letter-spacing:.03em}
+.tl-item b{display:block;font-size:var(--fs-s);margin:2px 0 2px}
+.tl-item p{font-size:var(--fs-s);color:var(--ink-3);margin:0}
+.tl-badge{display:inline-block;font-size:11px;padding:0 7px;border-radius:4px;background:var(--accent-soft);color:var(--accent);margin-left:6px;vertical-align:1px}
+
+/* 分类入口：标签索引 */
+.cat-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-3)}
+.cat-card{
+  display:block;padding:var(--sp-4);background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius-m);transition:border-color .18s ease,transform .18s ease;
+}
+.cat-card:hover{border-color:var(--main);transform:translateY(-3px)}
+.cat-card b{display:block;font-size:var(--fs-s);color:var(--ink);margin-bottom:2px}
+.cat-card span{font-size:var(--fs-xs);color:var(--ink-3)}
+.cat-card .count{color:var(--main-dark);font-weight:700}
+
+/* 深度解析：分栏正文 */
+.analysis{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);padding:var(--sp-6);box-shadow:var(--shadow-m)}
+.analysis > p{color:var(--ink-2)}
+.analysis .lead{font-size:var(--fs-l);color:var(--ink);font-weight:500}
+.analysis h3{margin-top:var(--sp-6);padding-top:var(--sp-5);border-top:1px dashed var(--line)}
+.analysis h3:first-of-type{margin-top:var(--sp-4);border-top:0;padding-top:0}
+.claim{
+  border-left:4px solid var(--main);background:var(--main-soft);
+  padding:var(--sp-4) var(--sp-5);border-radius:0 var(--radius-m) var(--radius-m) 0;
+  margin:var(--sp-4) 0;font-size:var(--fs-s);color:var(--ink-2);
+}
+.claim b{color:var(--main-dark)}
+.data-table{width:100%;border-collapse:collapse;font-size:var(--fs-s);margin:var(--sp-4) 0}
+.data-table th,.data-table td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+.data-table th{background:var(--bg);font-weight:600;font-size:var(--fs-xs);color:var(--ink-3);letter-spacing:.03em}
+.data-table td b{color:var(--main-dark)}
+
+/* 体验指南：编号步骤 */
+.steps{list-style:none;padding:0;margin:0;counter-reset:step;display:grid;gap:var(--sp-3)}
+.step{
+  display:flex;gap:var(--sp-4);padding:var(--sp-4);background:#fff;
+  border:1px solid var(--line);border-radius:var(--radius-m);counter-increment:step;
+}
+.step::before{
+  content:counter(step,decimal-leading-zero);flex:none;width:38px;height:38px;border-radius:50%;
+  background:var(--main-soft);color:var(--main-dark);font-weight:700;font-size:var(--fs-s);
+  display:flex;align-items:center;justify-content:center;
+}
+.step b{display:block;font-size:var(--fs-s);margin-bottom:2px}
+.step p{margin:0;font-size:var(--fs-s);color:var(--ink-3)}
+
+/* FAQ */
+.faq-item{border:1px solid var(--line);border-radius:var(--radius-m);background:#fff;margin-bottom:var(--sp-3);overflow:hidden}
+.faq-item summary{
+  cursor:pointer;padding:var(--sp-4);font-weight:600;font-size:var(--fs-s);
+  list-style:none;display:flex;justify-content:space-between;gap:var(--sp-3);align-items:flex-start;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:var(--main);font-size:var(--fs-l);line-height:1;flex:none;transition:transform .18s ease}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item[open] summary{background:var(--main-soft)}
+.faq-body{padding:0 var(--sp-4) var(--sp-4);font-size:var(--fs-s);color:var(--ink-2)}
+.faq-body p:last-child{margin-bottom:0}
+
+/* 评论 */
+.reviews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4)}
+.review{padding:var(--sp-4);background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);font-size:var(--fs-s)}
+.review .who{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.review .avatar{
+  width:30px;height:30px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;background:var(--accent);
+}
+.review .who b{font-size:var(--fs-xs);color:var(--ink)}
+.review .who span{font-size:11px;color:var(--ink-3)}
+.review p{margin:0;color:var(--ink-2)}
+.review .ref{
+  display:inline-block;margin-top:8px;font-size:11px;color:var(--main-dark);
+  background:var(--main-soft);padding:1px 8px;border-radius:4px;
+}
+.review.neutral{background:#fcfaf8}
+.review.neutral .avatar{background:#9a8d84}
+.review.crit .avatar{background:#7a5f52}
+
+/* 相关资讯 */
+.news-list{list-style:none;padding:0;margin:0}
+.news-item{
+  display:grid;grid-template-columns:96px minmax(0,1fr);gap:var(--sp-4);
+  padding:var(--sp-4) 0;border-bottom:1px solid var(--line-soft);
+}
+.news-item:last-child{border-bottom:0}
+.news-date{font-size:var(--fs-xs);color:var(--ink-3);letter-spacing:.02em}
+.news-body b{display:block;font-size:var(--fs-s);margin-bottom:2px}
+.news-body b a{color:var(--ink)}
+.news-body p{margin:0;font-size:var(--fs-s);color:var(--ink-3)}
+
+/* 相关推荐 标签 */
+.rec-tags{display:flex;flex-wrap:wrap;gap:10px}
+.rec-tags a{
+  display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);font-size:var(--fs-s);color:var(--ink-2);
+  transition:transform .18s ease,border-color .18s ease;
+}
+.rec-tags a:hover{border-color:var(--main);color:var(--main-dark);transform:translateY(-2px)}
+.rec-tags a .n{font-size:11px;color:var(--ink-3)}
+
+/* 榜单 / 可信度分层 */
+.ranking{display:grid;gap:var(--sp-3)}
+.rank-row{
+  display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:var(--sp-4);align-items:center;
+  padding:var(--sp-4);background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);
+}
+.rank-no{font-size:var(--fs-xl);font-weight:800;color:var(--line);text-align:center;line-height:1}
+.rank-row.top .rank-no{color:var(--main)}
+.rank-main b{display:block;font-size:var(--fs-s)}
+.rank-main span{font-size:var(--fs-xs);color:var(--ink-3)}
+.rank-val{font-size:var(--fs-s);font-weight:700;color:var(--main-dark);white-space:nowrap}
+
+/* 侧栏 */
+.side-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);padding:var(--sp-4);box-shadow:var(--shadow-s)}
+.side-card h3{font-size:var(--fs-m);margin-bottom:var(--sp-3);display:flex;align-items:center;gap:8px}
+.side-card h3::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--main)}
+.side-nav{list-style:none;padding:0;margin:0}
+.side-nav li{margin:0}
+.side-nav a{
+  display:block;padding:7px 10px;border-radius:var(--radius-s);font-size:var(--fs-s);color:var(--ink-2);
+  border-left:3px solid transparent;
+}
+.side-nav a:hover{background:var(--bg);color:var(--ink)}
+.side-nav a.active{background:var(--main-soft);color:var(--main-dark);border-left-color:var(--main);font-weight:600}
+.quote-card{background:var(--ink);color:#f3ece6;border-radius:var(--radius-m);padding:var(--sp-5)}
+.quote-card blockquote{margin:0 0 var(--sp-3);font-size:var(--fs-s);line-height:1.8}
+.quote-card cite{font-style:normal;font-size:var(--fs-xs);color:#c9bcb2;display:block}
+.quote-card .mark{font-size:30px;line-height:1;color:var(--main);display:block;margin-bottom:6px}
+.side-list{list-style:none;padding:0;margin:0}
+.side-list li{padding:8px 0;border-bottom:1px dashed var(--line);font-size:var(--fs-s)}
+.side-list li:last-child{border-bottom:0}
+.side-list .d{font-size:11px;color:var(--ink-3);display:block}
+
+/* 页尾 */
+.site-footer{background:var(--ink);color:#d8cec6;margin-top:var(--sp-7)}
+.footer-top{
+  display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:var(--sp-6);
+  padding-top:var(--sp-7);padding-bottom:var(--sp-6);
+}
+.f-brand{display:flex;align-items:center;gap:var(--sp-3);color:#fff;margin-bottom:var(--sp-4)}
+.f-brand svg{width:36px;height:36px}
+.f-brand b{font-size:var(--fs-l);letter-spacing:.02em}
+.footer-desc{font-size:var(--fs-s);color:#b7aaa0;margin:0;max-width:30em}
+.f-col h4{font-size:var(--fs-s);color:#fff;margin-bottom:var(--sp-3);letter-spacing:.04em}
+.f-col ul{list-style:none;padding:0;margin:0}
+.f-col li{margin-bottom:8px}
+.f-col a{font-size:var(--fs-s);color:#c0b3a9}
+.f-col a:hover{color:var(--main)}
+.footer-note{
+  border-top:1px solid #3a322d;padding:var(--sp-4) 0;font-size:var(--fs-xs);color:#9b8e85;
+  display:flex;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap;
+}
+.footer-note p{margin:0}
+.footer-bottom{
+  border-top:1px solid #3a322d;padding:var(--sp-4) 0 var(--sp-6);font-size:var(--fs-xs);color:#8d8078;
+  display:flex;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap;
+}
+.footer-bottom p{margin:0}
+
+/* 回到顶部 */
+.to-top{
+  position:fixed;right:18px;bottom:22px;z-index:70;width:44px;height:44px;border-radius:50%;
+  background:var(--main);color:#fff;border:0;cursor:pointer;box-shadow:var(--shadow-m);
+  display:none;align-items:center;justify-content:center;font-size:18px;
+}
+.to-top.show{display:flex}
+.to-top:hover{background:var(--main-dark)}
+
+/* 搜索无结果提示 */
+.empty-tip{display:none;font-size:var(--fs-s);color:var(--main-dark);margin-top:var(--sp-3)}
+.empty-tip.show{display:block}
+
+/* 响应式 */
+@media (max-width:1024px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:var(--sp-6)}
+  .side-col{order:2}
+  .hero-grid{grid-template-columns:1fr;gap:var(--sp-5)}
+  .hero-visual{min-height:0;max-width:440px}
+}
+@media (max-width:900px){
+  .overview{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  :root{--sticky-offset:150px}
+  .announce{position:sticky;top:0}
+  .site-header{top:auto;position:sticky}
+  .header-inner{flex-wrap:wrap;gap:var(--sp-2)}
+  .menu-btn{display:inline-block;margin-left:auto}
+  .main-nav{
+    display:none;width:100%;margin-left:0;padding:6px 0 10px;border-top:1px solid var(--line);
+  }
+  .main-nav.open{display:flex}
+  .main-nav a{flex:1 1 44%;text-align:center;padding:9px 6px;background:var(--bg);font-size:var(--fs-xs)}
+  .search-box input{width:120px}
+  .header-tools{order:3}
+  .hero h1{font-size:var(--fs-2xl)}
+  .grid-cards,.reviews{grid-template-columns:1fr}
+  .cat-index{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .analysis{padding:var(--sp-4)}
+  .news-item{grid-template-columns:1fr;gap:2px}
+  .rank-row{grid-template-columns:34px minmax(0,1fr) auto;gap:var(--sp-2)}
+  .footer-top{grid-template-columns:1fr;gap:var(--sp-5)}
+  .to-top{right:12px;bottom:14px;width:40px;height:40px}
+}
+@media (max-width:480px){
+  .wrap{padding:0 var(--sp-4)}
+  .hero-stat b{font-size:var(--fs-l)}
+  .cat-index{grid-template-columns:1fr}
+  .hero h1{font-size:26px}
+  .pill{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .btn:hover,.cat-card:hover,.rec-tags a:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 公告条 -->
+<div class="announce" role="region" aria-label="站内更新公告">
+  <div class="wrap">
+    <span class="tag">更新</span>
+    <p>11月6日补档：<a href="/#latest">2026年10月短篇《雨停之前》分镜与上色对比</a>已入库；11月5日新增角色设定集「灰原清」第三版。</p>
+  </div>
+</div>
+
+<!-- 页头 -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/#top" aria-label="小小绘推特合集 首页">
+      <svg viewBox="0 0 64 64" role="img" aria-label="小小绘推特合集 图形标志">
+        <rect width="64" height="64" rx="16" fill="#e8603c"/>
+        <path d="M17 45c7-2 10-9 10-16V15h7v15c0 4 2 7 6 7h6v9H30c-5 0-9-1-13-2z" fill="#fff"/>
+        <circle cx="46" cy="20" r="6" fill="#ffd9c2"/>
+        <path d="M43 20l2.2 2.2L48.5 18" stroke="#c94a29" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>
+        <span class="brand-name">小小绘推特合集</span>
+        <span class="brand-sub">插画 · 设定 · 短篇归档</span>
+      </span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" id="menuBtn">栏目 ▾</button>
+    <nav class="main-nav" id="main-nav" aria-label="主题导航">
+      <a href="/#overview">作品全景</a>
+      <a href="/#featured">精选插画</a>
+      <a href="/#latest">更新记录</a>
+      <a href="/#categories">主题分区</a>
+      <a href="/#analysis">风格解析</a>
+      <a href="/#guide">阅读指南</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#reviews">读者说</a>
+    </nav>
+    <div class="header-tools">
+      <div class="search-box">
+        <label for="siteSearch" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">搜索作品</label>
+        <input id="siteSearch" type="search" placeholder="搜作品/角色" autocomplete="off">
+        <button type="button" id="searchBtn" aria-label="搜索">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7a6f68" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.6-4.6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <p class="search-status" id="searchStatus" role="status" aria-live="polite"></p>
+</header>
+
+<main id="top">
+  <!-- 首屏 -->
+  <section class="hero" aria-label="首屏介绍">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-kicker">2026 · 第 11 期归档</span>
+        <h1>小小绘<span class="em">推特合集</span></h1>
+        <p class="hero-lead">把插画师小小绘在推特上散落的原创图、角色草稿与短篇漫画按时间与主题重新串起来：哪张是重绘、哪版设定被推翻、哪条线还在连载，都能在这里对上号。</p>
+        <div class="hero-meta">
+          <div class="hero-stat"><b>86</b><span>已归档作品</span></div>
+          <div class="hero-stat"><b>14</b><span>角色设定</span></div>
+          <div class="hero-stat"><b>9</b><span>短篇漫画</span></div>
+          <div class="hero-stat"><b>11.06</b><span>最近入库</span></div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#featured">先看精选 12 张</a>
+          <a class="btn btn-ghost" href="/#latest">按时间翻更新</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 420 340" role="img" aria-label="层叠画框与色卡组成的原创插画构图">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff3ec"/>
+              <stop offset="1" stop-color="#f6e3d7"/>
+            </linearGradient>
+            <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2f6f8f"/>
+              <stop offset="1" stop-color="#7db3c7"/>
+            </linearGradient>
+          </defs>
+          <rect x="8" y="8" width="404" height="324" rx="22" fill="url(#sky)"/>
+          <rect x="36" y="44" width="196" height="150" rx="12" fill="#fff" stroke="#e6ddd5"/>
+          <rect x="52" y="60" width="164" height="96" rx="6" fill="url(#sea)"/>
+          <circle cx="170" cy="88" r="14" fill="#ffd9c2"/>
+          <path d="M52 138c30-14 52 6 82-4s52-16 82-4v26H52z" fill="#1f5468" opacity=".65"/>
+          <rect x="52" y="166" width="84" height="8" rx="4" fill="#e6ddd5"/>
+          <rect x="52" y="180" width="56" height="6" rx="3" fill="#f1eae3"/>
+          <rect x="196" y="150" width="188" height="132" rx="14" fill="#fff" stroke="#e6ddd5"/>
+          <circle cx="256" cy="204" r="26" fill="#e8603c" opacity=".18"/>
+          <circle cx="256" cy="204" r="13" fill="#e8603c"/>
+          <rect x="296" y="188" width="72" height="9" rx="4.5" fill="#e6ddd5"/>
+          <rect x="296" y="206" width="52" height="7" rx="3.5" fill="#f1eae3"/>
+          <rect x="216" y="240" width="148" height="24" rx="12" fill="#fdece5"/>
+          <rect x="228" y="248" width="60" height="8" rx="4" fill="#f0b9a4"/>
+          <rect x="36" y="216" width="128" height="112" rx="14" fill="#fff" stroke="#e6ddd5"/>
+          <path d="M60 298c8-36 26-52 40-52s32 16 40 52z" fill="#2f6f8f" opacity=".2"/>
+          <circle cx="100" cy="248" r="15" fill="#e8603c" opacity=".85"/>
+          <rect x="60" y="308" width="80" height="6" rx="3" fill="#e6ddd5"/>
+          <g transform="translate(300,44) rotate(8)">
+            <rect width="76" height="76" rx="12" fill="#2f6f8f"/>
+            <path d="M20 52c8-2 11-9 11-18V20h8v14c0 5 2 8 6 8h7v8H32c-5 0-8-1-12-2z" fill="#fff"/>
+            <circle cx="55" cy="25" r="7" fill="#ffd9c2"/>
+          </g>
+          <path d="M358 210l10 20 20 4-16 14 4 21-18-10-18 10 4-21-16-14 20-4z" fill="#e8603c" opacity=".25"/>
+        </svg>
+        <span class="hero-note">构图示意 · 画框层叠与色卡取自 2026 年 9 月重绘稿</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <!-- 主内容 -->
+    <div class="main-col">
+
+      <!-- 01 领域概览 -->
+      <section class="block" id="overview" aria-labelledby="h-overview">
+        <div class="block-head">
+          <h2 id="h-overview"><span class="num">01</span>作品全景：推特散图如何归成一条线</h2>
+          <p>小小绘的发布节奏不稳定，一张图可能夹着草稿、清稿和次日修正。归档时按“发布日 → 修订 → 主题”三层排，先理清再谈风格。</p>
+        </div>
+        <div class="overview">
+          <div class="ov-lead">
+            <p>截至 2026 年 11 月 6 日，能确认属于小小绘本人账号的原创贴共 <b>86 条</b>，其中完整完成稿 41 张、线稿与色稿 27 张、短篇漫画 9 篇、角色设定图 9 张。另有 12 条转推或约稿展示不计入原创统计。</p>
+            <p>内容集中在三条线：以“灰原清”为主角的都市夜景系列、以“阿岚”为核心的校园短篇、以及零散的节日贺图。<b>2026 年 8 月 17 日</b>之后，账号把作品说明统一改为中英双语，旧贴的一行注释没再补。</p>
+            <p>归档时遇到的第一个麻烦是重绘。同一条线稿在 <b>9 月 3 日</b>、<b>9 月 21 日</b>两次重发上色版，构图几乎一致，只有背景灯色和人物外套从灰蓝换成橄榄绿。三版都保留，标注为 v1/v2/v3，不合并。</p>
+            <div class="ov-tags">
+              <span class="pill">灰原清</span>
+              <span class="pill">阿岚</span>
+              <span class="pill cool">都市夜景</span>
+              <span class="pill cool">校园短篇</span>
+              <span class="pill">分镜稿</span>
+              <span class="pill">节日贺图</span>
+            </div>
+          </div>
+          <div class="ov-side">
+            <div class="ov-item"><span class="ov-dot"></span><div><b>原创完成稿 41 张</b><span>含 7 张跨年重绘；分辨率多在 2048px 长边，少数为 1200px 手机截屏留存。</span></div></div>
+            <div class="ov-item"><span class="ov-dot b"></span><div><b>角色设定 14 份</b><span>灰原清 5 版、阿岚 3 版、配角 6 版；第三版设定删去了初稿的机械义肢设定。</span></div></div>
+            <div class="ov-item"><span class="ov-dot c"></span><div><b>短篇漫画 9 篇</b><span>最长 24 页，最短 6 页；其中《雨停之前》在 10 月 29 日发布完整版。</span></div></div>
+            <div class="ov-item"><span class="ov-dot"></span><div><b>未完成或撤稿 4 条</b><span>2 条因构图争议自行删除，2 条标注“暂不继续”，保留截图记录。</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 精选推荐 -->
+      <section class="block" id="featured" aria-labelledby="h-featured">
+        <div class="block-head">
+          <h2 id="h-featured"><span class="num">02</span>精选插画推荐：先看这 6 张</h2>
+          <p>从完成度、叙事信息和后续影响三方面挑，不按点赞数排。每张都注明了发布日与原贴附言，方便回查。</p>
+        </div>
+        <div class="grid-cards">
+          <article class="card gc">
+            <div class="gc-img"><img src="https://picsum.photos/seed/xiaoxiaohui-night/640/360" width="640" height="360" loading="lazy" alt="都市夜景插画：便利店灯箱下站着的灰原清，背景有电车高架"></div>
+            <div class="gc-body">
+              <h3><a href="/#latest">《便利店 23:40》灰原清夜景稿</a></h3>
+              <p>人物外套从初稿的灰蓝改成橄榄绿，背景灯箱文字由“24H”改成“23:40”，是夜景线定调的一张。</p>
+              <div class="gc-meta"><span class="k">9月21日 v3</span><span>完成稿</span><span>2048px</span></div>
+            </div>
+          </article>
+          <article class="card gc">
+            <div class="gc-img"><img src="https://picsum.photos/seed/xiaoxiaohui-rain/640/360" width="640" height="360" loading="lazy" alt="短篇漫画《雨停之前》跨页：雨棚下两人背对背，分镜格线为手绘"></div>
+            <div class="gc-body">
+              <h3><a href="/#analysis">短篇《雨停之前》完整版</a></h3>
+              <p>24 页，10 月 29 日一次发完。第 7 页到第 9 页的对白框位置被作者在 10 月 30 日的楼层里修正过两处。</p>
+              <div class="gc-meta"><span class="k">10月29日</span><span>短篇漫画</span><span>24页</span></div>
+            </div>
+          </article>
+          <article class="card gc">
+            <div class="gc-img"><img src="https://picsum.photos/seed/xiaoxiaohui-alan/640/360" width="640" height="360" loading="lazy" alt="校园插画：阿岚坐在教室窗台，桌上摊开练习册与一罐汽水"></div>
+            <div class="gc-body">
+              <h3><a href="/#categories">《窗台第三节课》阿岚校园稿</a></h3>
+              <p>用了逆光处理，练习册上的字是真实手写体扫描。原贴附言写“这页练了四遍手”，与画面对应。</p>
+              <div class="gc-meta"><span class="k">9月8日</span><span>完成稿</span><span>角色：阿岚</span></div>
+            </div>
+          </article>
+          <article class="card gc">
+            <div class="gc-img"><img src="https://picsum.photos/seed/xiaoxiaohui-setting/640/360" width="640" height="360" loading="lazy" alt="角色设定页版式：灰原清三视图与配色卡，右侧标注外套色号"></div>
+            <div class="gc-body">
+              <h3><a href="/#categories">灰原清设定集第三版</a></h3>
+              <p>11 月 5 日更新，删去机械义肢，新增外套色号标注。作者在楼层里说明这是“为了动画化设想做的减法”。</p>
+              <div class="gc-meta"><span class="k">11月5日</span><span>设定图</span><span>三视图</span></div>
+            </div>
+          </article>
+          <article class="card gc">
+            <div class="gc-img"><img src="https://picsum.photos/seed/xiaoxiaohui-festival/640/360" width="640" height="360" loading="lazy" alt="节日贺图：橙色灯笼与白色围巾人物剪影，画面右侧留白题字"></div>
+            <div class="gc-body">
+              <h3><a href="/#latest">中秋贺图《不圆的月亮》</a></h3>
+              <p>9 月 25 日发布，是唯一一张纯色块剪影。原贴说“画圆失败了”，反而成了当月转发最高的一张。</p>
+              <div class="gc-meta"><span class="k">9月25日</span><span>节日贺图</span><span>剪影</span></div>
+            </div>
+          </article>
+          <article class="card gc">
+            <div class="gc-img"><img src="https://picsum.photos/seed/xiaoxiaohui-sketch/640/360" width="640" height="360" loading="lazy" alt="分镜草稿：铅笔线条在网格纸上，标注箭头与页码，右上角写着第12页"></div>
+            <div class="gc-body">
+              <h3><a href="/#analysis">《雨停之前》第 12 页分镜草稿</a></h3>
+              <p>草稿与成稿比，删掉了两格特写，改为一个大远景。10 月 31 日的对比贴里有并排图。</p>
+              <div class="gc-meta"><span class="k">10月31日</span><span>分镜稿</span><span>对比图</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 03 最新更新 -->
+      <section class="block" id="latest" aria-labelledby="h-latest">
+        <div class="block-head">
+          <h2 id="h-latest"><span class="num">03</span>更新记录：最近 30 天入库条目</h2>
+          <p>只记发布、修订和补充说明三类动作。日期以推特时间线为准，跨时区贴以作者所在地 UTC+9 记。</p>
+        </div>
+        <ol class="timeline">
+          <li class="tl-item">
+            <span class="tl-time">11月6日 今天</span>
+            <b>补入《雨停之前》分镜与上色对比</b>
+            <p>作者把第 7、8、9 页的草稿和成稿并排发出，说明对白框位置调整原因。</p>
+          </li>
+          <li class="tl-item">
+            <span class="tl-time">11月5日</span>
+            <b>灰原清设定集第三版<span class="tl-badge">设定</span></b>
+            <p>新增外套色号，删去右手机械义肢。附言称“减法是给以后留余地”。</p>
+          </li>
+          <li class="tl-item">
+            <span class="tl-time">11月3日</span>
+            <b>阿岚生日短漫 8 页</b>
+            <p>与 9 月的校园线衔接，结尾留了下一话的招手指令。评论区有人指出背景练习册和上一话不一致。</p>
+          </li>
+          <li class="tl-item">
+            <span class="tl-time">10月31日</span>
+            <b>分镜对比贴：第 12 页改稿</b>
+            <p>两格特写改为一个大远景，作者说“想让雨声先出来”。</p>
+          </li>
+          <li class="tl-item">
+            <span class="tl-time">10月29日</span>
+            <b>短篇《雨停之前》完整版 24 页</b>
+            <p>此前 10 月 18 日发过前 9 页，这次一次发完，并补上第 10 页起的页码。</p>
+          </li>
+          <li class="tl-item">
+            <span class="tl-time">10月18日</span>
+            <b>《雨停之前》前 9 页</b>
+            <p>连载开始，原贴只写“先放这些”，未说明总页数。</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- 04 分类入口 -->
+      <section class="block" id="categories" aria-labelledby="h-categories">
+        <div class="block-head">
+          <h2 id="h-categories"><span class="num">04</span>主题分区：按角色与场景找图</h2>
+          <p>分类只按画面里能直接看到的元素分，不按作者心情或发布动机猜。一个作品可落在两个区，计数不重复。</p>
+        </div>
+        <div class="cat-index">
+          <a class="cat-card" href="/#featured"><b>灰原清 · 都市夜景</b><span><span class="count">18</span> 张 · 便利店、高架、雨棚</span></a>
+          <a class="cat-card" href="/#featured"><b>阿岚 · 校园日常</b><span><span class="count">11</span> 张 · 教室、窗台、练习册</span></a>
+          <a class="cat-card" href="/#analysis"><b>短篇漫画分镜</b><span><span class="count">9</span> 篇 · 含 2 篇未完成</span></a>
+          <a class="cat-card" href="/#featured"><b>节日与季节贺图</b><span><span class="count">7</span> 张 · 中秋、夏至、跨年</span></a>
+          <a class="cat-card" href="/#categories"><b>角色设定与三视图</b><span><span class="count">14</span> 份 · 含旧版留档</span></a>
+          <a class="cat-card" href="/#latest"><b>线稿与上色对照</b><span><span class="count">23</span> 组 · 重绘差异可查</span></a>
+        </div>
+      </section>
+
+      <!-- 05 深度解析 -->
+      <section class="block" id="analysis" aria-labelledby="h-analysis">
+        <div class="block-head">
+          <h2 id="h-analysis"><span class="num">05</span>风格解析：重绘不是修图，是改叙事</h2>
+          <p>把 9 月到 11 月的三次重绘放在一起看，能提出一个可被反驳的判断：小小绘的重绘主要改背景信息，而不动人脸。</p>
+        </div>
+        <div class="analysis">
+          <p class="lead">判断先说结论：<b>《便利店 23:40》的三版重绘，人物脸部和手势几乎没动，变化集中在背景灯箱、外套色和地面反光。</b>这与常见的“重绘=画得更好”不一样，它更像是在补场景信息。</p>
+
+          <h3>案例时间线：三版之间隔了 18 天</h3>
+          <p>v1 在 9 月 3 日发布，长边 1600px，背景灯箱写“24H”，人物外套灰蓝。v2 在 9 月 12 日，尺寸不变，灯箱改成“23:40”，地面加了一道反光。v3 在 9 月 21 日，长边 2048px，外套改为橄榄绿，灯箱文字保留 23:40。</p>
+          <table class="data-table">
+            <thead><tr><th>版本</th><th>发布日期</th><th>灯箱文字</th><th>外套色</th><th>地面反光</th></tr></thead>
+            <tbody>
+              <tr><td>v1</td><td>9月3日</td><td>24H</td><td>灰蓝 #7b8a96</td><td>无</td></tr>
+              <tr><td>v2</td><td>9月12日</td><td><b>23:40</b></td><td>灰蓝</td><td>一道</td></tr>
+              <tr><td>v3</td><td>9月21日</td><td>23:40</td><td><b>橄榄绿 #6b7047</b></td><td>两道</td></tr>
+            </tbody>
+          </table>
+          <p>三版的人脸位置、眼睛形状、手指数量完全一致，v2 与 v3 之间只有 1 像素级的线条误差。这说明重绘时保留了底层线稿，改的是上色层和背景矢量。</p>
+
+          <div class="claim"><b>可核对判断：</b>如果把三版的重绘面积算出来，人物区域变化不足 5%，背景区域变化超过 40%。这个比例支持“重绘改的是场景信息”的说法，也能被下一张重绘直接反驳。</div>
+
+          <h3>说法差异：作者自己怎么解释</h3>
+          <p>9 月 12 日 v2 发布时，原贴附言写“灯箱时间写错了，23:40 才是对的”。这是事实层面的修正。<b>9 月 21 日</b> v3 发布时，附言改成“外套颜色和雨夜更合”，没有提灯箱。两条附言说明：v2 是纠错，v3 是调整气氛。</p>
+          <p>但 10 月 8 日的一条回复里，作者又说“其实第一版最像记忆里的样子”。这与“外套颜色和雨夜更合”并不完全一致，前者是情感判断，后者是视觉效果判断。两种说法都保留，不合并成一条。</p>
+
+          <h3>规则前后变化：双语说明与页码</h3>
+          <p>2026 年 8 月 17 日之前，作品附言只有中文一行；之后改为中英双语，并开始标页码。短篇《雨停之前》是第一条从第 1 页起就带页码的作品，此前《夏至短篇》只标了“上/下”。</p>
+          <p>页码规则也有例外：10 月 18 日前 9 页那条没有页码，10 月 29 日完整版才补上。所以“带页码”不能作为判断作品是否完成的依据，只能作为发布批次的线索。</p>
+        </div>
+      </section>
+
+      <!-- 06 体验指南 -->
+      <section class="block" id="guide" aria-labelledby="h-guide">
+        <div class="block-head">
+          <h2 id="h-guide"><span class="num">06</span>阅读指南：第一次翻这套合集怎么走</h2>
+          <p>不按发布时间硬啃。先认角色，再看短篇，最后回头补线稿和设定，能少走弯路。</p>
+        </div>
+        <ol class="steps">
+          <li class="step"><div><b>先认灰原清和阿岚</b><p>看 11 月 5 日的设定集第三版，确认外套颜色和发型。旧版设定里灰原清有机械义肢，新版删掉了，别被旧图带偏。</p></div></li>
+          <li class="step"><div><b>读短篇《雨停之前》完整版</b><p>24 页一次读完，再回头看 10 月 18 日的前 9 页。前 9 页没有页码，结尾停在雨棚下，完整版第 10 页才接上对白。</p></div></li>
+          <li class="step"><div><b>对照第 12 页分镜草稿</b><p>10 月 31 日的对比贴里，草稿有两格特写，成稿改成一个远景。看完再读第 12 页，能注意到雨声的留白。</p></div></li>
+          <li class="step"><div><b>按角色分区补夜景线</b><p>从《便利店 23:40》v3 开始，再倒着看 v1、v2。灯箱从 24H 改成 23:40，是这条线时间设定的关键。</p></div></li>
+          <li class="step"><div><b>最后看线稿与上色对照</b><p>23 组对照里，有 6 组人物没改、只改背景。先看这 6 组，再看改动大的，顺序不容易乱。</p></div></li>
+        </ol>
+      </section>
+
+      <!-- 07 FAQ -->
+      <section class="block" id="faq" aria-labelledby="h-faq">
+        <div class="block-head">
+          <h2 id="h-faq"><span class="num">07</span>常见问题</h2>
+          <p>问题来自读者在评论区实际问过的，答案只写能核对的部分。</p>
+        </div>
+        <details class="faq-item" open>
+          <summary>灰原清的外套到底什么颜色？</summary>
+          <div class="faq-body"><p>以 11 月 5 日设定集第三版为准：橄榄绿，色号 #6b7047。9 月 3 日初稿是灰蓝 #7b8a96，9 月 21 日 v3 改成橄榄绿。旧图仍保留灰蓝，粉丝自制周边有混用两种颜色的情况。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>《雨停之前》一共多少页？前 9 页算完整吗？</summary>
+          <div class="faq-body"><p>完整版 24 页，10 月 29 日发布。10 月 18 日的前 9 页不是完整版，结尾停在雨棚下，第 10 页起才接上后续对白。前 9 页没有页码，完整版才补上。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>为什么同一张图有三个版本？哪个是最终版？</summary>
+          <div class="faq-body"><p>《便利店 23:40》有 v1（9月3日）、v2（9月12日）、v3（9月21日）。通常以 v3 为最终版，但作者在 10 月 8 日的回复里说“第一版最像记忆里的样子”，所以三版都保留，没有删旧版。如果要引用，注明版本号。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>推特账号被删的 4 条作品还能看到吗？</summary>
+          <div class="faq-body"><p>2 条因构图争议自行删除，2 条标注“暂不继续”。归档保留了截图和发布时间，但截图分辨率低于原图，不适合二次印刷。这 4 条不计入 86 条原创统计。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>阿岚生日短漫和 9 月的校园线是同一世界观吗？</summary>
+          <div class="faq-body"><p>是。11 月 3 日的 8 页短漫结尾留了与 9 月校园线衔接的招手指令。但评论区有人指出背景练习册与上一话不一致，作者在 11 月 4 日回复承认“画错了，下次改”，没有重绘。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>线稿和成稿对照一共多少组？</summary>
+          <div class="faq-body"><p>23 组，其中 6 组人物没改、只改背景，17 组人物和背景都有调整。9 月 21 日 v3 属于后者，人物脸部没动但外套颜色变了，归在背景与服装调整里。</p></div>
+        </details>
+      </section>
+
+      <!-- 08 用户评论 -->
+      <section class="block" id="reviews" aria-labelledby="h-reviews">
+        <div class="block-head">
+          <h2 id="h-reviews"><span class="num">08</span>读者说：几条有具体指向的评论</h2>
+          <p>选登评论保留了原文的口气，有的夸有的挑刺，指向具体作品或版本。</p>
+        </div>
+        <div class="reviews">
+          <div class="review">
+            <div class="who"><span class="avatar">林</span><div><b>林渡</b><span>11月6日 · 回复《雨停之前》</span></div></div>
+            <p>第 12 页改成一个远景之后，雨棚的雨线画得比前面细，翻回去看第 7 页又觉得刚好。这个对比贴比成稿本身有用。</p>
+            <span class="ref">指向：第12页分镜对比</span>
+          </div>
+          <div class="review neutral">
+            <div class="who"><span class="avatar">周</span><div><b>周与安</b><span>11月5日 · 回复设定集</span></div></div>
+            <p>外套色号标出来确实方便，但第三版把机械义肢删了，之前画的同人图全对不上。理解是为了动画化设想做减法，就是有点突然。</p>
+            <span class="ref">指向：灰原清设定第三版</span>
+          </div>
+          <div class="review crit">
+            <div class="who"><span class="avatar">K</span><div><b>Kaze</b><span>11月4日 · 回复阿岚短漫</span></div></div>
+            <p>生日短漫第 5 页练习册封面和 9 月《窗台第三节课》不一样，一个是蓝一个是灰。作者说是画错了，但没重绘，看着确实跳。</p>
+            <span class="ref">指向：阿岚生日短漫第5页</span>
+          </div>
+          <div class="review">
+            <div class="who"><span class="avatar">苏</span><div><b>苏木</b><span>11月3日 · 回复中秋贺图</span></div></div>
+            <p>《不圆的月亮》那张剪影反而是这个月最耐看的，纯色块没有细节，但围巾的白色留得很准。说是画圆失败，我看失败得刚好。</p>
+            <span class="ref">指向：中秋贺图</span>
+          </div>
+          <div class="review neutral">
+            <div class="who"><span class="avatar">陈</span><div><b>陈屿</b><span>10月30日 · 回复分镜对比</span></div></div>
+            <p>三版重绘我都存了，v2 和 v3 的灯箱文字一样，区别只有外套和反光。要说改叙事，我觉得 v2 加那道反光才是关键。</p>
+            <span class="ref">指向：便利店 23:40 v2</span>
+          </div>
+          <div class="review crit">
+            <div class="who"><span class="avatar">莫</span><div><b>莫雨</b><span>10月29日 · 回复完整版</span></div></div>
+            <p>24 页一次发完是好事，但前 9 页没有页码这件事现在才补，之前按前 9 页写的时间线分析全得重排。归档要是早点标版本就好了。</p>
+            <span class="ref">指向：《雨停之前》页码规则</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 相关资讯 -->
+      <section class="block" id="news" aria-labelledby="h-news">
+        <div class="block-head">
+          <h2 id="h-news"><span class="num">09</span>相关资讯与动态</h2>
+          <p>只收能对应到具体贴文或外部平台的原话，摘要不复述标题。</p>
+        </div>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">11月6日</span>
+            <div class="news-body"><b><a href="/#latest">分镜与上色对比贴发布</a></b><p>作者在推特附了第 7—9 页并排图，配文“先让雨声出来”，解释了删两格特写的原因。</p></div>
+          </li>
+          <li class="news-item">
+            <span class="news-date">11月5日</span>
+            <div class="news-body"><b><a href="/#overview">设定集第三版删去机械义肢</a></b><p>三视图右侧新增外套色号标注。评论区有人贴出旧版对比，作者回复“减法是给以后留余地”。</p></div>
+          </li>
+          <li class="news-item">
+            <span class="news-date">11月3日</span>
+            <div class="news-body"><b><a href="/#reviews">阿岚生日短漫结尾留招手指令</a></b><p>第 8 页右下角画了一只招手的手，与 9 月校园线呼应。练习册封面颜色与上一话不一致，作者承认画错。</p></div>
+          </li>
+          <li class="news-item">
+            <span class="news-date">10月31日</span>
+            <div class="news-body"><b><a href="/#analysis">第 12 页分镜对比贴</a></b><p>草稿两格特写改成成稿的大远景。作者说明“想让雨声先出来”，没有提对其他页的改动。</p></div>
+          </li>
+          <li class="news-item">
+            <span class="news-date">10月29日</span>
+            <div class="news-body"><b><a href="/#featured">《雨停之前》24 页完整版</a></b><p>补上第 10 页起页码。原贴只写“一次放完”，未解释与前 9 页发布间隔 11 天的原因。</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 10 相关推荐 -->
+      <section class="block" id="recommend" aria-labelledby="h-recommend">
+        <div class="block-head">
+          <h2 id="h-recommend"><span class="num">10</span>相关推荐：按具体条目延伸</h2>
+          <p>每个标签都指向一条能点开的具体作品或分区，不设泛分类。</p>
+        </div>
+        <div class="rec-tags">
+          <a href="/#featured">便利店 23:40 三版对照 <span class="n">3</span></a>
+          <a href="/#analysis">雨停之前第 12 页分镜改稿 <span class="n">2</span></a>
+          <a href="/#categories">灰原清设定集第三版色号 <span class="n">1</span></a>
+          <a href="/#reviews">阿岚生日短漫第 5 页练习册 <span class="n">1</span></a>
+          <a href="/#featured">窗台第三节课逆光稿 <span class="n">1</span></a>
+          <a href="/#featured">中秋贺图不圆的月亮 <span class="n">1</span></a>
+          <a href="/#latest">10月18日前 9 页连载起点 <span class="n">1</span></a>
+          <a href="/#overview">未完成或撤稿 4 条记录 <span class="n">4</span></a>
+        </div>
+      </section>
+
+      <!-- 11 补充板块：可信度分层 -->
+      <section class="block" id="ranking" aria-labelledby="h-ranking">
+        <div class="block-head">
+          <h2 id="h-ranking"><span class="num">11</span>可信度分层：哪些条目能直接引用</h2>
+          <p>归档里的信息按来源分成三层，引用前先看层，不确定的标出来。分层只看来源，不看好看程度。</p>
+        </div>
+        <div class="ranking">
+          <div class="rank-row top">
+            <span class="rank-no">1</span>
+            <div class="rank-main"><b>作者原贴与楼层回复</b><span>发布日、附言、后续修正都能对上；共 86 条原创贴，含 4 条截图留存。</span></div>
+            <span class="rank-val">可直接引用</span>
+          </div>
+          <div class="rank-row">
+            <span class="rank-no">2</span>
+            <div class="rank-main"><b>作者并排发布的对比图</b><span>第 12 页分镜对比、三版重绘对照等；对比图本身由作者制作，未标尺寸。</span></div>
+            <span class="rank-val">注明“对比图”</span>
+          </div>
+          <div class="rank-row">
+            <span class="rank-no">3</span>
+            <div class="rank-main"><b>读者截图与转述</b><span>含已删 2 条的截图，分辨率低；评论区对练习册颜色、页码规则的讨论。</span></div>
+            <span class="rank-val">标注“转述/截图”</span>
+          </div>
+          <div class="rank-row">
+            <span class="rank-no">4</span>
+            <div class="rank-main"><b>推测与未证实说法</b><span>“动画化设想”只见于作者一句附言，无其他来源；三版重绘的动机存在两种解释。</span></div>
+            <span class="rank-val">标为推测</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 侧栏 -->
+    <aside class="side-col" aria-label="侧栏导航与补充">
+      <nav class="side-card" aria-label="栏目快速跳转">
+        <h3>栏目导航</h3>
+        <ul class="side-nav" id="sideNav">
+          <li><a href="/#overview">作品全景</a></li>
+          <li><a href="/#featured">精选插画</a></li>
+          <li><a href="/#latest">更新记录</a></li>
+          <li><a href="/#categories">主题分区</a></li>
+          <li><a href="/#analysis">风格解析</a></li>
+          <li><a href="/#guide">阅读指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#reviews">读者说</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#ranking">可信度分层</a></li>
+        </ul>
+      </nav>
+
+      <div class="quote-card">
+        <span class="mark">“</span>
+        <blockquote>第一版最像记忆里的样子。灯箱时间写错了，23:40 才是对的。</blockquote>
+        <cite>—— 小小绘，9月12日与10月8日两条回复</cite>
+      </div>
+
+      <div class="side-card">
+        <h3>近期入库</h3>
+        <ul class="side-list">
+          <li><span class="d">11月6日</span>雨停之前分镜对比</li>
+          <li><span class="d">11月5日</span>灰原清设定第三版</li>
+          <li><span class="d">11月3日</span>阿岚生日短漫 8 页</li>
+          <li><span class="d">10月31日</span>第 12 页改稿对比</li>
+          <li><span class="d">10月29日</span>雨停之前完整版 24 页</li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>按角色找</h3>
+        <div class="rec-tags">
+          <a href="/#featured">灰原清 <span class="n">18</span></a>
+          <a href="/#featured">阿岚 <span class="n">11</span></a>
+          <a href="/#categories">配角设定 <span class="n">6</span></a>
+          <a href="/#latest">节日贺图 <span class="n">7</span></a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="f-brand">
+          <svg viewBox="0 0 64 64" role="img" aria-label="小小绘推特合集 页尾标志">
+            <rect width="64" height="64" rx="16" fill="#e8603c"/>
+            <path d="M17 45c7-2 10-9 10-16V15h7v15c0 4 2 7 6 7h6v9H30c-5 0-9-1-13-2z" fill="#fff"/>
+            <circle cx="46" cy="20" r="6" fill="#ffd9c2"/>
+          </svg>
+          <b>小小绘推特合集</b>
+        </div>
+        <p class="footer-desc">把散在时间线里的图、草稿和短篇按版本重新排好，旧版不删，页码和日期都能回查。</p>
+      </div>
+      <div class="f-col">
+        <h4>作品</h4>
+        <ul>
+          <li><a href="/#featured">精选插画 12 张</a></li>
+          <li><a href="/#latest">最近 30 天更新</a></li>
+          <li><a href="/#categories">角色设定与三视图</a></li>
+          <li><a href="/#analysis">短篇分镜解析</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>使用</h4>
+        <ul>
+          <li><a href="/#guide">第一次阅读顺序</a></li>
+          <li><a href="/#faq">常见问题 6 条</a></li>
+          <li><a href="/#ranking">可信度分层说明</a></li>
+          <li><a href="/#reviews">读者评论选登</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>条目</h4>
+        <ul>
+          <li><a href="/#featured">便利店 23:40 三版</a></li>
+          <li><a href="/#analysis">雨停之前第 12 页</a></li>
+          <li><a href="/#reviews">阿岚生日短漫</a></li>
+          <li><a href="/#featured">中秋贺图不圆的月亮</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <p>页面条目为示例归档数据：作品名、角色名与日期用于说明分类与版本对照方式，不代表真实出版物。</p>
+      <p>正文更新至 2026 年 11 月 6 日，对应“雨停之前分镜对比”入库条。</p>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 小小绘推特合集 归档整理 · 内容按版本标注，未获授权请勿商用。</p>
+      <p>版面与图形标志为原创设计，不含外链图标与框架。</p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* 移动端菜单 */
+  var menuBtn = document.getElementById('menuBtn');
+  var mainNav = document.getElementById('main-nav');
+  if(menuBtn && mainNav){
+    menuBtn.addEventListener('click', function(){
+      var open = mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mainNav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A' && window.innerWidth <= 760){
+        mainNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  /* 侧栏滚动高亮 */
+  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var sections = sideLinks.map(function(a){
+    var id = a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  });
+  function highlight(){
+    var pos = window.scrollY + 160;
+    var current = -1;
+    sections.forEach(function(sec, i){
+      if(sec && sec.offsetTop <= pos) current = i;
+    });
+    sideLinks.forEach(function(a, i){
+      a.classList.toggle('active', i === current);
+    });
+  }
+  window.addEventListener('scroll', highlight, {passive:true});
+  window.addEventListener('resize', highlight);
+  highlight();
+
+  /* 回到顶部 */
+  var toTop = document.getElementById('toTop');
+  function toggleTop(){
+    if(window.scrollY > 480){ toTop.classList.add('show'); }
+    else{ toTop.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggleTop, {passive:true});
+  toggleTop();
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 本地搜索 */
+  var searchInput = document.getElementById('siteSearch');
+  var searchBtn = document.getElementById('searchBtn');
+  var status = document.getElementById('searchStatus');
+
+  function clearMarks(){
+    document.querySelectorAll('main [data-hit]').forEach(function(el){
+      el.removeAttribute('data-hit');
+      el.style.outline = '';
+      el.style.outlineOffset = '';
+    });
+  }
+
+  function runSearch(){
+    var q = (searchInput.value || '').trim().toLowerCase();
+    clearMarks();
+    if(!q){
+      status.textContent = '';
+      status.classList.remove('show');
+      return;
+    }
+    var main = document.querySelector('main');
+    var nodes = main.querySelectorAll('h1, h2, h3, article, .tl-item, .faq-item, .step, .review, .cat-card, .news-item, .rec-tags a, .rank-row');
+    var hit = null;
+    nodes.forEach(function(node){
+      if(!hit && node.textContent.toLowerCase().indexOf(q) !== -1){
+        hit = node;
+      }
+    });
+    if(hit){
+      hit.setAttribute('data-hit','1');
+      hit.style.outline = '3px solid #2f6f8f';
+      hit.style.outlineOffset = '4px';
+      hit.scrollIntoView({behavior:'smooth', block:'center'});
+      status.textContent = '找到与“' + q + '”相关的内容，已定位到页面对应条目。';
+      status.classList.add('show');
+    }else{
+      status.textContent = '没有找到“' + q + '”。可试试角色名（灰原清、阿岚）或作品名片段（便利店、雨停之前）。';
+      status.classList.add('show');
+    }
+  }
+
+  if(searchBtn){ searchBtn.addEventListener('click', runSearch); }
+  if(searchInput){
+    searchInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+    });
+    searchInput.addEventListener('input', function(){
+      if(!searchInput.value){ clearMarks(); status.classList.remove('show'); status.textContent=''; }
+    });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "小小绘推特合集",
+  "description": "整理插画师小小绘在推特发布的原创插画、角色设定与短篇漫画，按月归档并附版本对照与阅读指南。",
+  "inLanguage": "zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "灰原清的外套到底什么颜色？",
+      "acceptedAnswer": {"@type": "Answer", "text": "以11月5日设定集第三版为准，外套为橄榄绿 #6b7047。9月3日初稿是灰蓝 #7b8a96，9月21日 v3 改成橄榄绿。旧图仍保留灰蓝，周边存在混用两种颜色的情况。"}
+    },
+    {
+      "@type": "Question",
+      "name": "《雨停之前》一共多少页？前9页算完整吗？",
+      "acceptedAnswer": {"@type": "Answer", "text": "完整版24页，10月29日发布。10月18日的前9页不是完整版，结尾停在雨棚下，第10页起才接上后续对白，完整版补上页码。"}
+    },
+    {
+      "@type": "Question",
+      "name": "为什么同一张图有三个版本？哪个是最终版？",
+      "acceptedAnswer": {"@type": "Answer", "text": "《便利店 23:40》有 v1（9月3日）、v2（9月12日）、v3（9月21日）。通常以 v3 为最终版，但作者在10月8日回复里说第一版最像记忆里的样子，因此三版都保留，引用时需注明版本号。"}
+    },
+    {
+      "@type": "Question",
+      "name": "推特账号被删的四条作品还能看到吗？",
+      "acceptedAnswer": {"@type": "Answer", "text": "2条因构图争议自行删除，2条标注暂不继续。归档保留截图和发布时间，截图分辨率低于原图，不适合二次印刷，4条不计入86条原创统计。"}
+    },
+    {
+      "@type": "Question",
+      "name": "阿岚生日短漫和9月校园线是同一世界观吗？",
+      "acceptedAnswer": {"@type": "Answer", "text": "是。11月3日的8页短漫结尾留了与9月校园线衔接的招手指令。评论区指出背景练习册颜色与上一话不一致，作者在11月4日回复承认画错，未重绘。"}
+    },
+    {
+      "@type": "Question",
+      "name": "线稿和成稿对照一共多少组？",
+      "acceptedAnswer": {"@type": "Answer", "text": "共23组，其中6组人物没改、只改背景，17组人物和背景均有调整。9月21日 v3 属于后者，人物脸部没动但外套颜色变了。"}
+    }
+  ]
+}
+</script>
+</body>
+          </html>
